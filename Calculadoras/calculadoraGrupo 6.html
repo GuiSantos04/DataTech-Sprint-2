@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Investimento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            background-color: #3f043f;
+        }
+    </style>
+
+<span style="color: #3dc23d;"></span>
+
+    <h1 style="color:#ffffff;">Calculadora de Investimento e de despesas atuais</h1>
+    <hr><br></h1>
+
+    <p style="color: #e0e0e0;">Orçamento inicial (Investimento no projeto em R$) <br> <input id="input_orcamentoInicial" type="number"></p>
+    <p style="color: #e0e0e0;">Receita Anual da Empresa prevista (R$) <br> <input id="input_ReceitaAnual" type="number"></p>
+    <p style="color: #e0e0e0;">Quantidade de Manutenções Preventivas e Corretivas (mês) <br> <input id="input_qtdprevcorre" type="number"></p>
+    <p style="color: #e0e0e0;">Quantidade de Upgrades de Peças (mês) <br> <input id="input_qtdpecas" type="number"></p>
+    <p style="color: #e0e0e0;">Quantidade de Suportes Técnicos de Emergência (mês) <br> <input id="input_qtdsuptec" type="number"></p>
+
+
+    <button onclick="calcular()">Calcular Gastos</button> <br> <br>
+
+
+    <p>
+    <div id="div_mensagem"></p>
+    </div>
+    <p>
+    <div id="div_resultado"></div>
+    </body>
+
+</html>
+<script>
+    function calcular() {
+
+        // adicionando as input como variáveis 
+        var orcamentoInicial = Number(input_orcamentoInicial.value);
+        var receitaAnual = Number(input_ReceitaAnual.value);
+        var manu_prev = Number(input_qtdprevcorre.value)
+        var manu_pecas = Number(input_qtdpecas.value)
+        var sup_tec = Number(input_qtdsuptec.value)
+        // dando valor as variéveis
+        var valor_prev = manu_prev * 465;
+        var valor_pecas = manu_pecas * 310;
+        var valor_suptec = sup_tec * 155;
+        //conta necessária das variáveis
+        var totalGastosMensais = valor_prev + valor_pecas + valor_suptec;
+        var GastosMensaisAnual = totalGastosMensais * 12; 
+        var custoTotal = orcamentoInicial + GastosMensaisAnual;
+        var lucroBruto = receitaAnual - custoTotal;
+
+        //parte do financeiro com porcentagens
+        var Margem_de_lucro = (lucroBruto / receitaAnual) * 100
+
+        if (custoTotal > receitaAnual) {
+ div_mensagem.innerHTML = ` <b style= "color: red "><b>O custo total anual de </b>R$ ${custoTotal.toFixed(2)} 
+ <b>é maior do que a receita anual de </b>R$ ${receitaAnual.toFixed(2)}.<b> Isso significa que há um prejuízo</b>.`    ;
+
+      }
+
+            
+        
+        
+            div_resultado.innerHTML =
+               `<h3 style="color: #ff4b4b;">Sua empresa tem os seguintes gastos mensais em média:</h3>
+            <p style="color: #ffffff;"><b>Manutenções Preventivas e Corretivas: <span style="color: #ff4b4b;"> R$</span> ${valor_prev.toFixed(2)}</b></p>
+            <p style="color: #ffffff;"><b>Upgrades de Peças: <span style="color: #ff4b4b;"> R$</span> ${valor_pecas.toFixed(2)}</b></p>
+            <p style="color: #ffffff;"><b>Suportes Técnicos de Emergência: <span style="color: #ff4b4b;"> R$</span> ${valor_suptec.toFixed(2)}</b></p>
+            <p style="color: #ffffff;"><b>Total de gastos mensais: <span style="color: #ff4b4b;"> R$</span> ${totalGastosMensais.toFixed(2)}</b></p>
+            <br>
+           <p style="color: #ffffff;"><b>Com a media das Manutenções preventivas e corretivas sendo de <span style="color: #ff4b4b;"> R$ 465,00 </span>,   
+            o valor médio de Upgrades de peças sendo <span style="color: #ff4b4b;"> R$310,00</span> e o de Suportes técnicos de emergência de <span style="color: #ff4b4b;"> R$155,00</span>
+           temos <span style="color: #ff4b4b;"> R$  ${totalGastosMensais.toFixed(2)}</span> de gastos mensais devido a cada quantidade utilizada. </P>
+
+            <br>
+            <h3 style="color: #ff4b4b;"><b>Seu investimento no projeto oferece os seguintes benefícios:</h3>
+            <p style="color: #ffffff;"><b>Custo Total:</b> <span style="color: #ff4b4b;"> R$</span> ${custoTotal.toFixed(2)}</p>
+            <p style="color: #ffffff;"><b>Lucro Bruto:</b> <span style="color: #3dc23d;"> R$</span> ${lucroBruto.toFixed(2)}</p>
+            <p style="color: #ffffff;"><b>Margem de Lucro:</b> <span style="color: #3dc23d;"> ${Margem_de_lucro.toFixed(2)}%</span></p>
+             <br>
+            <p style="color: #ffffff;"><b> Com a soma dos Gastos Mensais durante um ano completo de <span style="color: #ff4b4b;"> R$  ${GastosMensaisAnual.toFixed(2)}</span> e do seu Orçamento Inical de <span style="color: #ff4b4b;"> R$  ${orcamentoInicial}</span> temos de Custo Total <span style="color: #ff4b4b;"> R$  ${custoTotal.toFixed(2)}</span>,
+                <br>
+                <br>
+             Operando a subtração dos valores do Custo Total de <span style="color: #ff4b4b;"> R$${custoTotal.toFixed(2)}</span> e da Receita anual prevista de <span style="color: #3dc23d;"> R$  ${receitaAnual.toFixed(2)}</span> fará o seu Lucro bruto ser <span style="color: #3dc23d;"> R$  ${lucroBruto.toFixed(2)}</span>
+                <br>
+                <br>
+            Aplicando a regra de três divindindo o Lucro Bruto <span style="color: #3dc23d;"> R$${lucroBruto.toFixed(2)}</span> pela Receita anual prevista <span style="color: #3dc23d;"> R$${receitaAnual.toFixed(2)}</span> e multiplcando por 100 teremos de Margem de lucro <span style="color: #3dc23d;"> ${Margem_de_lucro.toFixed(2)}%
+
+           ` 
+    }
+
+</script>
