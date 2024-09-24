@@ -1,0 +1,14 @@
+body {
+    background-image: url(./WhatsApp\ Image\ 2024-09-21\ at\ 20.55.21.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.logo {
+    width: 10%;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+}
