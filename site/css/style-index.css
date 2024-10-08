@@ -1,40 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
 * {
 	margin: 0;
 	padding: 0;
 }
+
 body {
-	background-image: url("../img/DataTech\ Company\ Presentation.png");
+	background-image: url("../img/background.jpeg");
 	background-size: cover;
 	font-family: "Poppins", sans-serif;
 }
 
 .logo {
-<<<<<<< HEAD
     width: 10%;
     margin: 0;
     margin-left: 30px;
     padding: 10px;
-=======
-	width: 10%;
-	margin: 0;
-	margin-left: 30px;
-	padding: 10px;
 }
 
-.logo2{
-    width: 30vw;
+h1{
+	font-family: "Orbitron", sans-serif;
+	font-size: 100px;
+	text-align: left;
+	margin-bottom: 15px;
+	
 }
 
-header {
-	background-color: rgba(0, 0, 0, 0.7);
->>>>>>> 6f6987f9e55075b5db79d7ac273f28d8b38f4c4c
+span{
+	font-size: 20px;
+	text-align: justify;
+}
+
+a{
+    text-decoration: none;
+    padding: 15px;
+    align-items: center;
+    color: white;
+}
+
+nav {
+    display: flex;
+    padding: 20px;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cabecalho {
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
+	background-color: rgba(0, 0, 0, 0.7)
+
 }
+
+
 
 nav button {
 	cursor: pointer;
@@ -55,8 +80,7 @@ nav button:hover {
 }
 .container {
 	margin: 1vw;
-	padding: 1vw;
-	background: linear-gradient(to right, rgba(0, 181, 248, 0.8), rgba(48, 73, 154, 0.5));
+	padding: 6vw;
 	border-radius: 10px;
     display: flex;
     flex-direction: initial;
@@ -70,8 +94,7 @@ nav button:hover {
     text-align: center;
 }
 
-.titulo {
-}
+
 
 .texto {
 	text-align: center;
