@@ -47,10 +47,7 @@ CREATE TABLE sensor (
 );
 
 CREATE TABLE leitura (
-    idLeitura INT,
-    fkSensor INT,
-    fkSensEmp INT,
-    PRIMARY KEY(idLeitura, fkSensor, fkSensEmp),
+    idLeitura INT primary key auto_increment,
     dataHora DATETIME,
     temperatura FLOAT(5, 2),
     umidade FLOAT(5, 2),
