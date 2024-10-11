@@ -15,36 +15,37 @@
     <div class="container">
         <div class="fundo">
             
-            <div class="divisao">
+        <div class="divisao">
             <div class="medidas">
                 <div class="titulo">
-                    <h1 >Calculadora de Investimento</h1>
+                    <h1>Calculadora de Investimento</h1>
                 </div>
 
-                <div class="painel">
+                    <div class="painel">
 
-                        <p>Orçamento inicial (Investimento no projeto em R$)</p>
-                        <input id="input_orcamentoInicial" type="text">
-                        <p>Receita Anual da Empresa prevista (R$)</p>  
-                        <input id="input_ReceitaAnual" type="text">
-                        <p>Quantidade de Manutenções Preventivas e Corretivas (mês)</p> 
-                        <input id="input_qtdprevcorre" type="text">
-                        <p>Quantidade de Upgrades de Peças (mês)</p>
-                        <input id="input_qtdpecas" type="text">
-                        <p>Quantidade de Suportes Técnicos de Emergência (mês)</p>
-                        <input id="input_qtdsuptec" type="text">
+                            <p>Orçamento inicial (Investimento no projeto em R$)</p>
+                            <input id="input_orcamentoInicial" type="text">
+                            <p>Receita Anual da Empresa prevista (R$)</p>  
+                            <input id="input_ReceitaAnual" type="text">
+                            <p>Quantidade de Manutenções Preventivas e Corretivas (mês)</p> 
+                            <input id="input_qtdprevcorre" type="text">
+                            <p>Quantidade de Upgrades de Peças (mês)</p>
+                            <input id="input_qtdpecas" type="text">
+                            <p>Quantidade de Suportes Técnicos de Emergência (mês)</p>
+                            <input id="input_qtdsuptec" type="text">
 
-                        <button onclick="calcular()">Calcular Gastos</button>
+                            <button onclick="calcular()">Calcular Gastos</button>
 
+                    </div>
+                
                 </div>
-            
-            </div>
 
 
-            <div class="resultados">
-                <div id="div_mensagem"></div>
-                <div id="div_resultado"></div>
-            </div>
+                <div class="resultados">
+                    <div id="div_mensagem"></div>
+                    <div id="div_resultado"></div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -90,6 +91,7 @@
             <p class= "result_text">Upgrades de Peças: <span class= "negativo"> R$</span class= "negativo"> ${valor_pecas.toFixed(2)}</p>
             <p class= "result_text">Suportes Técnicos de Emergência: <span class= "negativo"> R$</span> ${valor_suptec.toFixed(2)}</p>
             <p class= "result_text">Total de gastos mensais: <span class= "negativo"> R$</span> ${totalGastosMensais.toFixed(2)}</p>            
+            
             <p class= "result_text">Com a media das Manutenções preventivas e corretivas sendo de <span class= "negativo"> R$ 465,00 </span>,   
             o valor médio de Upgrades de peças sendo <span class= "negativo"> R$310,00</span> e o de Suportes técnicos de emergência de <span class= "negativo"> R$155,00</span>
             temos <span class= "negativo"> R$  ${totalGastosMensais.toFixed(2)}</span> de gastos mensais devido a cada quantidade utilizada.
@@ -100,14 +102,15 @@
             <p class= "result_text">Custo Total: <span class= "negativo"> R$</span> ${custoTotal.toFixed(2)}</p>
             <p class= "result_text">Lucro Bruto: <span style="color: #3dc23d;"> R$</span> ${lucroBruto.toFixed(2)}</p>
             <p class= "result_text">Margem de Lucro: <span style="color: #3dc23d;"> ${Margem_de_lucro.toFixed(2)}%</span></p>
-            <p class= "result_text">Com a soma dos Gastos Mensais durante um ano completo de <span class= "negativo"> R$  ${GastosMensaisAnual.toFixed(2)}</span> e do seu Orçamento Inical de <span style="color: #ff4b4b;"> R$  ${orcamentoInicial}</span> temos de Custo Total <span style="color: #ff4b4b;"> R$  ${custoTotal.toFixed(2)}</span>,
-                           
+            
+            <p class= "result_text">Com a soma dos Gastos Mensais durante um ano completo de <span class= "negativo"> R$  ${GastosMensaisAnual.toFixed(2)}</span> e do seu Orçamento Inical de <span style="color: #ff4b4b;"> R$  ${orcamentoInicial}</span> temos de Custo Total <span style="color: #ff4b4b;"> R$  ${custoTotal.toFixed(2)}</span>,               
             Operando a subtração dos valores do Custo Total de <span style="color: #ff4b4b;"> R$${custoTotal.toFixed(2)}</span> 
             e da Receita anual prevista de <span style="color: #3dc23d;"> R$  ${receitaAnual.toFixed(2)}</span>
             fará o seu Lucro bruto ser <span style="color: #3dc23d;"> R$  ${lucroBruto.toFixed(2)}</span>      
             Aplicando a regra de três divindindo o Lucro Bruto <span style="color: #3dc23d;"> R$${lucroBruto.toFixed(2)}</span> pela Receita anual prevista <span style="color: #3dc23d;"> R$${receitaAnual.toFixed(2)}</span> e multiplcando por 100 teremos de Margem de lucro <span style="color: #3dc23d;"> ${Margem_de_lucro.toFixed(2)}%
 
-            ` 
+            
+           ` 
     }
 
 </script>
