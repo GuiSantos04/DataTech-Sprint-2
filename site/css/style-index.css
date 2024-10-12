@@ -19,7 +19,7 @@ body {
 .logo {
     width: 10%;
     margin: 0;
-    margin-left: 30px;
+    margin-left: 50px;
     padding: 10px;
 }
 
@@ -51,6 +51,8 @@ a:hover{
 nav {
     display: flex;
     padding: 20px;
+	gap: 40px;
+	margin-right: 50px;
 }
 
 header{
@@ -231,7 +233,7 @@ main {
 .contate{
 	display: flex;
 	flex-direction: row;
-	gap:90px;
+	gap:150px;
 }
 
 .icon{
