@@ -19,7 +19,7 @@ body {
 }
 
 header{
-    background-color: rgba(0, 0, 0, 0.7)
+    background-color: rgba(0, 0, 0)
     
 }
 
@@ -27,6 +27,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     height: 550px;
    
 }
@@ -43,19 +44,13 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     color:white;
-    padding:  20px 0;
-    
+    padding:  20px 0px;  
 }
 
-.card a{
-    text-decoration: none;
-    color: #fff;
-    margin-bottom: 10px;
-    margin-top: 2px;
-    font-size: 14px;
-}
+
 
 .formulario-cadastro{
     display: flex;
@@ -64,6 +59,8 @@ header{
     width: 90%;
     justify-content: space-between;
     margin-bottom: 15px;
+    gap: 70px;
+ 
 }
 
 .formulario{
@@ -78,20 +75,11 @@ header{
 .form-column {
     display: flex;
     flex-direction: column;
-    width: 48%;
+    width: 50%;
+    justify-content: space-between;
+    
 }
 
-.input-column{
-    display: flex;
-    flex-direction: column;
-    gap: 10px; 
-}
-
-.input-column label {
-    font-size: 14px;
-    color: white;
-    margin-bottom: 5px;
-}
 
 .formulario input, .formulario-cadastro input{
     border: 2px solid #32b9cd;
@@ -101,7 +89,8 @@ header{
     height: 25px;
     background-color: rgba(255, 255, 255, 0.8);
     color: #000;
-    font-size: 15px
+    font-size: 15px;
+    padding: 2px;
 }
 
 .campo{
@@ -110,14 +99,14 @@ header{
     padding: 5px 0;
 }
 
-.botao{
+.button{
     cursor: pointer;
     border: 1px solid white;
     border-radius: 2px;
     font-size: 18px;
     color: rgb(255, 255, 255);
     background-color: transparent;
-    width: 120px;
+    width: 30%;
     height: 30px;
     align-self: center;
     margin-top: 10px;
@@ -125,12 +114,18 @@ header{
     font-weight: bold;
     margin-bottom: 15px;
     transition: all 0.3s ease;
+    text-align: center;
+    align-items: center;
+    border-radius: 5px;
+    text-decoration: none;
+    line-height: 30px;
 }
 
-.botao:hover{
+.button:hover{
     background-color: white;
     color: #000;
 }
+
 
 span {
     text-align: center;
