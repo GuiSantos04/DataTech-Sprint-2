@@ -27,12 +27,16 @@ body {
     background-color: rgba(0, 0, 0, 0.7)
 }
 
+.a-logo{
+    padding: 0 !important; 
+}
 a{
     text-decoration: none;
-    padding: 15px;
     align-items: center;
     color: white;
+    padding: 15px;
 }
+
 
 nav {
     display: flex;
