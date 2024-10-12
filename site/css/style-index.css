@@ -147,28 +147,57 @@ main {
 
 .about-us{
     display: flex;
-    flex-direction: column;
-    justify-content:flex-end;
+	flex-direction: row;
+    justify-content:space-between;
     text-align: justify;
     align-items: center;
-    height: 500PX;
-    width: 55%;
-    padding: 70px;
+	width: 90%;
     font-size: 20px;
 	color: #fff;
-	margin-top: 5%;
-	margin-left: 150px;
-	gap: 25px;
+	gap: 10%;
+
 }
 	
 .about{
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	padding: 0;
 
 }
 
 .img-about{
 	align-items: center;
-	margin-right: 200px;
-	margin-top: 25%;
+	height: 20%;
+}
+
+
+#section-about{
+	margin-left: 7%;
+	color: #fff;
+}	
+
+/* Missão */
+
+.gradiente{
+	background: linear-gradient(to right, rgb(1, 146, 200, 0.8), rgb(1, 58, 80, 0.5));
+	display: flex;
+	flex-direction: row;
+	text-align: justify;
+	gap: 50px;
+	padding: 40px;
+	width: 70%;
+	border-radius: 10px;
+
+}
+
+#section-missao{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.missao-visao{
+	gap: 50px;
+	align-items: center;
 }
