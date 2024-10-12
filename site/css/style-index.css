@@ -38,6 +38,11 @@ a{
     padding: 15px;
     align-items: center;
     color: white;
+	transition: color 0.3s ease;
+}
+
+a:hover{
+	color: #0A7ABF;
 }
 
 nav {
@@ -81,7 +86,6 @@ nav button:hover {
 .container {
 	border-radius: 10px;
     display: flex;
-    flex-direction: initial;
     align-items: center;
 	color: white;
 	width: 100%;
@@ -136,4 +140,35 @@ main {
     gap: 100px;
 	justify-content: space-evenly;
 
+}
+
+
+/*Sobre nós*/
+
+.about-us{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    text-align: justify;
+    align-items: center;
+    height: 500PX;
+    width: 55%;
+    padding: 70px;
+    font-size: 20px;
+	color: #fff;
+	margin-top: 5%;
+	margin-left: 150px;
+	gap: 25px;
+}
+	
+.about{
+	display: flex;
+	flex-direction: row;
+
+}
+
+.img-about{
+	align-items: center;
+	margin-right: 200px;
+	margin-top: 25%;
 }
