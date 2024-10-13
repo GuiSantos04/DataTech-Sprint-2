@@ -16,7 +16,7 @@ function logar() {
             <a href="usuario.html"><img width="100px" src="./img/verificar.png"></a>
 
             <div class=cadastro_realizado>
-                <span>Clique no botão verde para ser redirecionado a tela tela de login.</span>
+                <span>Clique no botão verde para ser redirecionado a sua página.</span>
             </div>
         </div>
     </div>
