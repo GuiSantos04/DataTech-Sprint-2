@@ -8,6 +8,9 @@ body {
     background-image: url('../img/DataTech\ Company\ Presentation.png');
     background-size: cover;
     font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
 }
 
@@ -82,7 +85,7 @@ header{
 }
 
 
-.formulario input, .formulario-cadastro input{
+#ipt_empresa, .formulario input, .formulario-cadastro input{
     border: 2px solid #32b9cd;
     text-align: center;
     border-radius: 10px;
@@ -145,4 +148,19 @@ h1 {
 
 .cadastro{
     padding: 20px;
+}
+
+footer{
+	background-color: #00569e;
+	padding: 20px 0;
+	width: 100%;
+	text-align: center;
+	/* display: flex; */
+	/* justify-content: center; */
+    margin-top:auto;
+}
+
+footer span{
+	color: white;
+	font-size: 12px;
 }

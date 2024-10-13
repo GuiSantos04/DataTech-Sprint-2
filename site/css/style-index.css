@@ -9,7 +9,8 @@
 
 body {
 	background-image: url("../img/background.jpeg");
-	background-size: cover;
+	background-size: 100%;
+	background-repeat: repeat-y;
 	font-family: "Poppins", sans-serif;
 	margin: 0;
     padding: 0;
@@ -36,7 +37,6 @@ span{
 	text-align: justify;
 	margin-left: 15px;
 }
-
 
 
 a{
@@ -133,7 +133,7 @@ section {
     margin: 0;
     padding: 100px;
     border-radius: 10px;
-	margin-top: 100px;
+	margin-top: 200px;
 	margin-bottom: 200px;
 }
 
