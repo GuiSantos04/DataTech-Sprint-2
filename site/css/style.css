@@ -8,6 +8,9 @@ body {
     background-image: url('../img/DataTech\ Company\ Presentation.png');
     background-size: cover;
     font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -145,4 +148,17 @@ h1 {
 
 .cadastro{
     padding: 20px;
+}
+
+footer{
+	background-color: #00569e;
+	padding: 20px 0;
+	width: 100%;
+	text-align: center;
+    margin-top: auto;
+}
+
+footer span{
+	color: white;
+	font-size: 12px;
 }

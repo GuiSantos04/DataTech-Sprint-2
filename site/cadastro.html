@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./script.js"></script>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body>
+<body id="estrutura">
     <header>
         <a href="index.html"><img src="./img/logo-png.png" class="logo"></a>
     </header>
@@ -24,29 +25,54 @@
                 
                 <div class="campo">
                     <span>Nome fantasia:</span>
-                    <input type="text" id="ipt_cnpj" placeholder="Nome comercial da empresa">
+                    <input type="text" id="ipt_nome" placeholder="Nome comercial da empresa">
                 </div>
                 <div class="campo">
                     <span>Representante legal:</span>
-                    <input type="text" id="ipt_cnpj" placeholder="Nome do responsável">
+                    <input type="text" id="ipt_repre" placeholder="Nome do responsável">
                 </div>
                 <div class="campo">
                 <span>CEP:</span>
-                <input type="text" id="ipt_cep" placeholder="00000-000">
+                <input type="number" id="ipt_cep" placeholder="00000-000">
             </div>
             <div class="campo">
-            <span>E-mail:</span>
-            <input type="text" id="ipt_email" placeholder="contato@empresa.com">
-        </div>
+                <span>Número:</span>
+                <input
+                  type= "number"
+                  id="ipt_num"
+                  placeholder="Digite o número"
+                />
+            </div>
+            <div class="campo">
+                <span>Cidade:</span>
+                <input
+                  type="text"
+                  id="ipt_cidade"
+                  placeholder="Digite a cidade"
+                />
+            </div>
+            <div class="campo">
+                <span>Estado:</span>
+                <input
+                  type="text"
+                  id="ipt_estado"
+                  placeholder="Digite o Estado"
+                />
+            </div>
+            
     </div>
 <div class="form-column">
     <div class="campo">
+        <span>E-mail:</span>
+        <input type="text" id="ipt_email" placeholder="contato@empresa.com">
+    </div>
+    <div class="campo">
         <span>CNPJ:</span>
-        <input type="text" id="ipt_cnpj" placeholder="00.000.000/0000-00">
+        <input type="number" id="ipt_cnpj" placeholder="00.000.000/0000-00">
     </div>
     <div class="campo">
     <span>DataCenter (m²):</span>
-    <input type="text" id="ipt_tamanho" placeholder="Ex.: 1500">
+    <input type="number" id="ipt_tamanho" placeholder="Ex.: 1500">
     </div>
     <div class="campo">
     <span>Usuário</span>
@@ -60,13 +86,20 @@
     <span>Confirme sua senha</span>
     <input type="password" id="ipt_confirmacao" placeholder="Digite a senha novamente">
     </div>
+    <div class="campo">
+        <span>Lembrete de senha:</span>
+        <input type="text" placeholder="Digite dica para senha">
+    </div>
 </div>
     
     </div>
-        <a class="button" href="cadastro_realizado.html">Cadastrar</a>
+        <button onclick="cadastrar()" class="button">Cadastrar</button>
         <a class="button" href="login.html">Voltar</a>
     </div>
-    </div>
+<!-- 
+    <footer>
+		<span> &copy; 2024 DataTech Security   </span>
+	</footer> -->
     
 </body>
 </html>
