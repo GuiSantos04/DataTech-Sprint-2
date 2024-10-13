@@ -85,7 +85,7 @@ header{
 }
 
 
-#ipt_empresa, .formulario input, .formulario-cadastro input{
+.formulario input, .formulario-cadastro input{
     border: 2px solid #32b9cd;
     text-align: center;
     border-radius: 10px;
@@ -155,8 +155,6 @@ footer{
 	padding: 20px 0;
 	width: 100%;
 	text-align: center;
-	/* display: flex; */
-	/* justify-content: center; */
     margin-top:auto;
 }
 

@@ -8,26 +8,23 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
 
-  <body>
+  <body id="estrutura">
     <header>
       <a href="index.html"><img src="./img/logo-png.png" class="logo" /></a>
     </header>
     <div class="container">
       <div class="card cadastro">
         <h1>Cadastro</h1>
-        <div class="campo">
-            <span>Razão social:</span>
-            <input
-              type="text"
-              id="ipt_empresa"
-              placeholder="Razão social da empresa"
-            />
-          </div>
         <div class="formulario-cadastro">
-
           <div class="form-column">
-
-
+            <div class="campo">
+                <span>Razão social:</span>
+                <input
+                  type="text"
+                  id="ipt_empresa"
+                  placeholder="Razão social da empresa"
+                />
+              </div>
             <div class="campo">
               <span>Nome fantasia:</span>
               <input
@@ -119,6 +116,14 @@
                 placeholder="Digite a senha novamente"
               />
             </div>
+            <div class="campo">
+                <span>Lembrete de senha</span>
+                <input
+                  type="text"
+                  id="ipt_lembrete"
+                  placeholder="Lembrete de senha"
+                />
+              </div>
           </div>
         </div>
         <button onclick="cadastrar()" class="button">Cadastrar</button>
