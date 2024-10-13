@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./script.js"></script>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
+<body id="estrutura_login">
     <header>
         <a href="index.html"><img src="./img/logo-png.png" class="logo"></a>
     </header>
@@ -16,14 +17,14 @@
             <div class="formulario">
             <div class="campo">
                 <span>Usuário:</span>
-                <input type="text"  id="ipt_usuario" placeholder="Digite seu usuário">
+                <input type="text"  id="ipt_login" placeholder="Digite seu usuário">
             </div>
 
             <div class="campo">
                 <span>Senha:</span>
-                <input type="password" class="senha" id="ipt_senha" placeholder="Digite sua senha">
+                <input type="password" class="senha" id="ipt_senha_login" placeholder="Digite sua senha">
             </div> </div>
-            <a  class="button" href="usuario.html">Entrar</a>
+            <button onclick="logar()" class="button">Entrar</button>
             <a class="button" href="cadastro.html">Não tem cadastro?</a>
     
     </div>

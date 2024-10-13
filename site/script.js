@@ -2,9 +2,30 @@ var user = "";
 var passwd = "";
 
 function logar() {
-  usuario = ipt_usuario.value;
-  senha = ipt_senha.value;
+  var login = ipt_login.value;
+  var senhaLogin = ipt_senha_login.value;
   var mensagem = "";
+
+  if(login == "Frizza" && senhaLogin == "Frizza@12345"){
+    estrutura_login.innerHTML = `<header>
+        <img src="./img/logo-png.png" class="logo">
+    </header>
+    <div class="container">
+        <div class="card cadastro">
+            <h1>Bem vindo ${login}!</h1>
+            <a href="usuario.html"><img width="100px" src="./img/verificar.png"></a>
+
+            <div class=cadastro_realizado>
+                <span>Clique no botão verde para ser redirecionado a tela tela de login.</span>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <span> &copy; 2024 DataTech Security </span>
+    </footer>`;
+  } else {
+    alert("Algo deu errado! \nCredenciais devem ser iguais a do cadastro!")
+  }
 }
 
 function cadastrar() {
@@ -159,7 +180,7 @@ function cadastrar() {
     <footer>
         <span> &copy; 2024 DataTech Security </span>
     </footer>`;
-    
+
   } else {
     alert(
       "A senha deve conter ao menos: \n- 1 letra Maiuscula \n- 1 letra minuscula \n- 1 número \n- 1 caractere especial; \n A confirmação deve ser igual a senha descrita no campo anterior!"
