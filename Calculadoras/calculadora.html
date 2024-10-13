@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Investimento</title>
-    <link rel="stylesheet" href="style.calc.css">
+    <link rel="stylesheet" href="./style.calc.css">
 
 </head>
 
@@ -26,11 +26,11 @@
         <div class="divisao">
             <div class="medidas">
                 <div class="titulo">
-                    <h1>Calculadora de Investimento</h1>
+                    
                 </div>
 
                     <div class="painel">
-
+                        <h1>Calculadora de Investimento</h1>
                             <p>Orçamento inicial (Investimento no projeto em R$)</p>
                             <input id="input_orcamentoInicial" type="text">
                             <p>Receita Anual da Empresa prevista (R$)</p>  
@@ -42,10 +42,11 @@
                             <p>Quantidade de Suportes Técnicos de Emergência (mês)</p>
                             <input id="input_qtdsuptec" type="text">
 
-                            <button id="botao" onclick="calcular()">Calcular Gastos</button>
+                            <button class="botao" onclick="calcular()">Calcular Gastos</button>
+                            <button class="botao" href="../site/index.html">Voltar</button>
 
                     </div>
-                
+                   
                 </div>
 
 
@@ -108,7 +109,7 @@
             <p class= "result_text">Lucro Bruto: <span class = "beneficio"> R$</span> ${lucroBruto.toFixed(2)}</p><br>
             <p class= "result_text">Margem de Lucro: <span class = "beneficio"> ${Margem_de_lucro.toFixed(2)}%</span></p><br>
             
-            <p class= "result_text">Com a soma dos Gastos Mensais durante um ano completo de <span class= "negativo"> R$  ${GastosMensaisAnual.toFixed(2)}</span> e do seu Orçamento Inical de <span class= "negativo"> R$  ${orcamentoInicial.toFixed(2)}</span> temos de Custo Total <span class= "negativo"> R$  ${custoTotal.toFixed(2)}</span>,               
+            <p class= "result_text">Com a soma dos Gastos Mensais durante um ano completo de <span class= "negativo"> R$  ${GastosMensaisAnual.toFixed(2)}</span> e do seu Orçamento Inicial de <span class= "negativo"> R$  ${orcamentoInicial.toFixed(2)}</span> temos de Custo Total <span class= "negativo"> R$  ${custoTotal.toFixed(2)}</span>,               
             Operando a subtração dos valores do Custo Total de <span class= "negativo"> R$${custoTotal.toFixed(2)}</span> 
             e da Receita anual prevista de <span class = "beneficio"> R$  ${receitaAnual.toFixed(2)}</span>
             fará o seu Lucro bruto ser <span class = "beneficio"> R$  ${lucroBruto.toFixed(2)}</span>      
