@@ -109,6 +109,57 @@ nav button:hover {
 	text-align: center;
 }
 
+.button{
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 2px;
+    font-size: 18px !important;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    width: 20%;
+    height: 30px;
+    align-self: center;
+    margin-top: 70px;
+    font-size: smaller;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-align: center;
+    align-items: center;
+    border-radius: 5px;
+    text-decoration: none;
+    line-height: 30px;
+}
+
+.button:hover{
+    background-color: white;
+    color: #000;
+}
+
+.img-barra{
+	margin-top: 50px;
+	width: 20px;
+	
+}
+
+.home{
+	display: flex;
+	flex-direction: row;
+}
+
+.home-conteudo{
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	padding: 20px;
+}
+
+.img-dtcenter{
+	width: 20%;
+	justify-content: flex-end;
+	margin-left: 60px;
+	border-radius: 10px;
+}
+
 footer{
 	background-color: #00569e;
 	padding: 20px 0;
@@ -142,7 +193,7 @@ main {
 }
 
 .main{
-	margin-bottom: 400px;
+	margin-bottom: 250px;
 }
 
 .servico{
