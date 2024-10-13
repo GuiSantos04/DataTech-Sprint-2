@@ -13,7 +13,7 @@ function logar() {
     <div class="container">
         <div class="card cadastro">
             <h1>Bem vindo ${login}!</h1>
-            <a href="usuario.html"><img width="100px" src="./img/verificar.png"></a>
+            <a href="dashboard.html"><img width="100px" src="./img/verificar.png"></a>
 
             <div class=cadastro_realizado>
                 <span>Clique no botão verde para ser redirecionado a sua página.</span>
