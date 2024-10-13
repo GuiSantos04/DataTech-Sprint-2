@@ -9,8 +9,7 @@
 
 body {
 	background-image: url("../img/background.jpeg");
-	background-size: 100%;
-	background-repeat: repeat-y;
+	background-size: cover;
 	font-family: "Poppins", sans-serif;
 	margin: 0;
     padding: 0;
@@ -135,7 +134,7 @@ section {
     padding: 20px;
     border-radius: 10px;
 	margin-top: 100px;
-	margin-bottom: 200px;
+	margin-bottom: 150px;
 }
 
 main {
