@@ -10,7 +10,7 @@ function logar() {
     estrutura_login.innerHTML = `<header>
         <img src="./img/logo-png.png" class="logo">
     </header>
-    <div class="container">
+    <div class="container-login">
         <div class="card cadastro">
             <h1>Bem vindo ${login}!</h1>
             <a href="dashboard.html"><img width="100px" src="./img/verificar.png"></a>
@@ -167,7 +167,7 @@ function cadastrar() {
     estrutura.innerHTML = `<header>
         <img src="./img/logo-png.png" class="logo">
     </header>
-    <div class="container">
+    <div class="container-login">
         <div class="card cadastro">
             <h1>Cadastro realizado com sucesso!</h1>
             <a href="login.html"><img width="100px" src="./img/verificar.png"></a>
