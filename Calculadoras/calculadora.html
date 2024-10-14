@@ -13,24 +13,16 @@
 <body>
     <header class="cabecalho">
 		<img class="logo" src="../site/img/logo-png.png" alt="Logo DataTech">
-		<!-- <nav>
-			<a href="./index.html">Início</a>
-			<a href="./sobrenos.html">Sobre nós</a>
-			<a href="">Serviço</a>
-			<a href="./login.html">Entrar</a>
-		</nav> -->
 	</header>
     <div class="container">
         <div class="fundo">
             
         <div class="divisao">
             <div class="medidas">
-                <div class="titulo">
-                    
-                </div>
-
-                    <div class="painel">
-                        <h1>Calculadora de Investimento</h1>
+ 
+                <div class="painel">
+                    <h1>Calculadora de Investimento</h1>
+                        <div class="valores">
                             <p>Orçamento inicial (Investimento no projeto em R$)</p>
                             <input id="input_orcamentoInicial" type="text">
                             <p>Receita Anual da Empresa prevista (R$)</p>  
@@ -41,7 +33,8 @@
                             <input id="input_qtdpecas" type="text">
                             <p>Quantidade de Suportes Técnicos de Emergência (mês)</p>
                             <input id="input_qtdsuptec" type="text">
-
+                        </div>
+                        
                             <button class="botao" onclick="calcular()">Calcular Gastos</button>
                             <button class="botao" href="../site/index.html">Voltar</button>
 
@@ -74,8 +67,9 @@
         var valor_suptec = sup_tec * 155;
         //conta necessária das variáveis
         var totalGastosMensais = valor_prev + valor_pecas + valor_suptec;
-        var GastosMensaisAnual = totalGastosMensais * 12; 
-        var custoTotal = orcamentoInicial + GastosMensaisAnual;
+        var gastoAnual = totalGastosMensais * 12; 
+        var gastoStud = gastoAnual*0.75;
+        var custoTotal = orcamentoInicial + gastoStud;
         var lucroBruto = receitaAnual - custoTotal;
         var mensagem = "";
         //parte do financeiro com porcentagens
@@ -93,27 +87,17 @@
             `
             <h3 class="gastos"> Sua empresa tem os seguintes gastos mensais em média: </h3>
             
-            <p class= "result_text">Manutenções Preventivas e Corretivas: <span class= "negativo"> R$</span> ${valor_prev.toFixed(2)}</p><br>
-            <p class= "result_text">Upgrades de Peças: <span class= "negativo"> R$</span class= "negativo"> ${valor_pecas.toFixed(2)}</p><br>
-            <p class= "result_text">Suportes Técnicos de Emergência: <span class= "negativo"> R$</span> ${valor_suptec.toFixed(2)}</p><br>
-            <p class= "result_text">Total de gastos mensais: <span class= "negativo"> R$</span> ${totalGastosMensais.toFixed(2)}</p><br>            
-            
-            <p class= "result_text">Com a media das Manutenções preventivas e corretivas sendo de <span class= "negativo"> R$ 465,00 </span>,   
-            o valor médio de Upgrades de peças sendo <span class= "negativo"> R$310,00</span> e o de Suportes técnicos de emergência de <span class= "negativo"> R$155,00</span>
-            temos <span class= "negativo"> R$  ${totalGastosMensais.toFixed(2)}</span> de gastos mensais devido a cada quantidade utilizada.<br><br>
-
+            <p class= "result_text">Manutenções Preventivas e Corretivas: <span class= "negativo"> ${manu_prev}</span> X 465.00 = <span class= "negativo"> R$ ${valor_prev.toFixed(2)}</span></p><br>
+            <p class= "result_text">Upgrades de Peças:<span class= "negativo"> ${manu_pecas}</span> X 310.00 = <span class= "negativo"> R$ ${valor_pecas.toFixed(2)}</span></p><br>
+            <p class= "result_text">Suportes Técnicos de Emergência:<span class= "negativo"> ${sup_tec}</span> X 155.00 = <span class= "negativo"> R$ ${valor_suptec.toFixed(2)}</span></p><br>
+            <p class= "result_text">Total de gastos mensais: <span class= "negativo"> R$ ${totalGastosMensais.toFixed(2)}</span></p><br>            
             
             <h3 class = "beneficio">Seu investimento no projeto oferece os seguintes benefícios:</h3>
             
-            <p class= "result_text">Custo Total: <span class= "negativo"> R$</span> ${custoTotal.toFixed(2)}</p><br>
-            <p class= "result_text">Lucro Bruto: <span class = "beneficio"> R$</span> ${lucroBruto.toFixed(2)}</p><br>
-            <p class= "result_text">Margem de Lucro: <span class = "beneficio"> ${Margem_de_lucro.toFixed(2)}%</span></p><br>
-            
-            <p class= "result_text">Com a soma dos Gastos Mensais durante um ano completo de <span class= "negativo"> R$  ${GastosMensaisAnual.toFixed(2)}</span> e do seu Orçamento Inicial de <span class= "negativo"> R$  ${orcamentoInicial.toFixed(2)}</span> temos de Custo Total <span class= "negativo"> R$  ${custoTotal.toFixed(2)}</span>,               
-            Operando a subtração dos valores do Custo Total de <span class= "negativo"> R$${custoTotal.toFixed(2)}</span> 
-            e da Receita anual prevista de <span class = "beneficio"> R$  ${receitaAnual.toFixed(2)}</span>
-            fará o seu Lucro bruto ser <span class = "beneficio"> R$  ${lucroBruto.toFixed(2)}</span>      
-            Aplicando a regra de três divindindo o Lucro Bruto <span class = "beneficio"> R$${lucroBruto.toFixed(2)}</span> pela Receita anual prevista <span class = "beneficio"> R$${receitaAnual.toFixed(2)}</span> e multiplcando por 100 teremos de Margem de lucro <span class = "beneficio"> ${Margem_de_lucro.toFixed(2)}%`
+            <p class= "result_text">Custo Total sem implementar o projeto: <span class= "negativo"> R$ ${gastoAnual.toFixed(2)}</span></p><br>
+            <p class= "result_text">Custo Total implementando o projeto: <span class= "beneficio"> R$ ${custoTotal.toFixed(2)}</span></p><br>
+            <p class= "result_text">Lucro com o projeto: <span class = "beneficio"> R$ ${lucroBruto.toFixed(2)}</span></p><br>
+            <p class= "result_text">Margem de Lucro: <span class = "beneficio"> ${Margem_de_lucro.toFixed(2)}%</span></p><br>`
                 
             resultados.innerHTML = mensagem;
     }

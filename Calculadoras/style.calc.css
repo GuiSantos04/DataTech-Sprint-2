@@ -60,15 +60,13 @@ h1 {
 .painel {
     display: flex;
     justify-content: center;
-    padding: 120px;
-    width: 50%;
+    width: 40vw;
     flex-direction: column;
-    height: 100%;
     border: 2px solid #000000;
     text-align: center;
     border-radius: 10px;
     margin: 0;
-    height: 300px;
+    height: 72vh;
     background: linear-gradient(to right, rgba(0, 181, 248, 0.8), rgba(48, 73, 154, 0.5));
     color: #000;
     font-size: 15px;
@@ -168,5 +166,5 @@ input {
     color: #000;
     font-size: 15px;
     padding: 1px;
-    width: 100%;
+    width: 75%;
 }
