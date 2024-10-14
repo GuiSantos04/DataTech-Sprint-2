@@ -25,14 +25,13 @@ body {
 
 h1{
 	font-family: "Orbitron", sans-serif;
-	font-size: 100px;
+	font-size: 4.5rem;
 	text-align: left;
 	padding: 15px;
 }
 
 span{
 	font-size: 20px;
-	text-align: justify;
 	text-align: justify;
 	margin-left: 15px;
 }
@@ -103,8 +102,6 @@ nav button:hover {
     display: flex;
     flex-direction: column;
     text-align: center;
-	background-color: rgb(0, 31, 63, 0.8);
-	border-radius: 10px;
 }
 
 .texto {
@@ -115,11 +112,11 @@ nav button:hover {
     cursor: pointer;
     border: 1px solid white;
     border-radius: 2px;
-    font-size: 18px !important;
+    font-size: 1.2rem !important;
     color: rgb(255, 255, 255);
     background-color: transparent;
-    width: 20%;
-    height: 30px;
+    width: 30%;
+    height: 2rem;
     align-self: center;
     margin-top: 70px;
     font-size: smaller;
@@ -239,7 +236,7 @@ main {
     justify-content:space-between;
     text-align: justify;
     align-items: center;
-	width: 90%;
+	width: 100%;
     font-size: 20px;
 	color: #fff;
 	gap: 10%;
@@ -261,7 +258,7 @@ main {
 
 
 #section-about{
-	margin-left: 7%;
+	/* margin-left: 3%; */
 	color: #fff;
 }	
 
@@ -301,6 +298,10 @@ main {
 	font-size: 20px;
 	padding: 10px;
 	line-height: 1.8;
+}
+
+.contate-conteudo h1 {
+	margin-bottom: 1.5rem;
 }
 
 .contate .img-barra{
