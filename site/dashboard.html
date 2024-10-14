@@ -1,250 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard DataTech</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./css/style-index.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard DataTech</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="./css/style-index.css" />
+  <body>
+    <header class="cabecalho">
+      <img class="logo" src="./img/logo-png.png" alt="Logo DataTech" />
+      <nav>
+        <a href="./index.html">Início</a>
+        <a href="./sobrenos.html">Sobre nós</a>
+        <a href="./login.html">Entrar</a>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div class="dashboard-conteudo">
+          <h1>Dashboards de Monitoramento</h1>
+          <div class="chart">
+            <div class="chart-container">
+              <canvas id="myChart"></canvas>
+            </div>
+            <div class="chart-container">
+              <canvas id="myChart1"></canvas>
+            </div>
+          </div>
+          <div class="chart">
+            <div class="chart-container">
+              <canvas id="myChart2"></canvas>
+            </div>
+            <div class="chart-container">
+              <canvas id="myChart3"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-</head>
-
-<body>
-  <header class="cabecalho">
-    <img class="logo" src="./img/logo-png.png" alt="Logo DataTech">
-    <nav>
-      <a href="./index.html">Início</a>
-      <a href="./sobrenos.html">Sobre nós</a>
-      <a href="./login.html">Entrar</a>
-    </nav>
-  </header>
-<main>
-  <section>
-     
-    <div class="dashboard-conteudo">
-      <h1>Dashboards de Monitoramento</h1>
-      <div class="chart">
-        <div class="chart-container">
-          <canvas id="myChart"></canvas>
-        </div>
-        <div class="chart-container">
-          <canvas id="myChart1"></canvas>
-        </div>
-      </div>
-      <div class="chart">
-        <div class="chart-container">
-          <canvas id="myChart2"></canvas>
-        </div>
-        <div class="chart-container">
-          <canvas id="myChart3"></canvas>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
- 
-  <footer>
-		<span> &copy; 2024 DataTech Security   </span>
-	</footer>
-</body>
-
+    <footer>
+      <span> &copy; 2024 DataTech Security </span>
+    </footer>
+  </body>
 </html>
 
 <script>
-  const ctx = document.getElementById('myChart');
-  const cty = document.getElementById('myChart1');
+  const ctx = document.getElementById("myChart");
+  const cty = document.getElementById("myChart1");
 
   new Chart(ctx, {
-    type: 'line',
+    type: "line",
     data: {
-      labels: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00'],
-      datasets: [{
-        label: 'Temperatura (°C)',
-        data: [18, 20, 21, 27, 25, 24, 28, 30, 29, 29, 27, 25, 24, 22, 20, 20, 19, 19, 18, 19, 20, 20, 21, 21],
-        borderWidth: 1,
-        borderColor: 'rgb(229, 240, 255)',
-        backgroundColor: 'rgb(229, 240, 255)'
-          
-    
-      },
-      {
-        label: 'Umidade (%)',
-        data: [42, 45, 47, 51, 57, 60, 55, 54, 52, 51, 54, 59, 61, 65, 60, 57, 54, 52, 50, 47, 46, 44, 43, 44],
-        borderWidth: 1,
-        borderColor: 'rgb(153, 204, 255)',
-        backgroundColor: 'rgb(153, 204, 255)'
-        
-      }]
+      labels: [
+        "08:00",
+        "09:00",
+        "10:00",
+        "11:00",
+        "12:00",
+        "13:00",
+        "14:00",
+        "15:00",
+        "16:00",
+        "17:00",
+        "18:00",
+        "19:00",
+        "20:00",
+        "21:00",
+        "22:00",
+        "23:00",
+        "00:00",
+        "01:00",
+        "02:00",
+        "03:00",
+        "04:00",
+        "05:00",
+        "06:00",
+        "07:00",
+      ],
+      datasets: [
+        {
+          label: "Temperatura (°C)",
+          data: [
+            18, 20, 21, 27, 25, 24, 28, 30, 29, 29, 27, 25, 24, 22, 20, 20, 19,
+            19, 18, 19, 20, 20, 21, 21,
+          ],
+          borderWidth: 1,
+          borderColor: "rgb(229, 240, 255)",
+          backgroundColor: "rgb(229, 240, 255)",
+        },
+        {
+          label: "Umidade (%)",
+          data: [
+            42, 45, 47, 51, 57, 60, 55, 54, 52, 51, 54, 59, 61, 65, 60, 57, 54,
+            52, 50, 47, 46, 44, 43, 44,
+          ],
+          borderWidth: 1,
+          borderColor: "rgb(153, 204, 255)",
+          backgroundColor: "rgb(153, 204, 255)",
+        },
+      ],
     },
     options: {
       plugins: {
         title: {
           display: true,
-          text: 'Variação de Temperatura e Umidade por Dia',
-            color: '#fff',
-            font: {
-              size: 20 
-            },
-            ticks:{
-            color: '#fff',
-            
-          }
-        },legend: {
-                labels: {
-                    color: '#fff'
-                }
-            }
+          text: "Variação de Temperatura e Umidade por Dia",
+          color: "#fff",
+          font: {
+            size: 20,
+          },
+          ticks: {
+            color: "#fff",
+          },
+        },
+        legend: {
+          labels: {
+            color: "#fff",
+          },
+        },
       },
       scales: {
-            x: {
-                ticks: {
-                    color: '#fff' 
-                }
-            },
-            y: {
-                beginAtZero: true,
-                ticks: {
-                    color: '#fff' 
-                }
-            }
-        }
-    }
-});
+        x: {
+          ticks: {
+            color: "#fff",
+          },
+        },
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: "#fff",
+          },
+        },
+      },
+    },
+  });
 
   new Chart(cty, {
-    type: 'bar',
+    type: "bar",
     data: {
-      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-      datasets: [{
-        label: 'Temperatura média (°C)',
-        data: [22, 29, 21, 23, 25, 19, 18, 20, 21, 24, 26, 27],
-        borderWidth: 1,
-        borderColor: 'rgb(204, 229, 255)',
-        backgroundColor: 'rgb(204, 229, 255)'
-      },
-      {
-        label: 'Umidade média (%)',
-        data: [52, 49, 50, 47, 56, 52, 51, 52, 48, 51, 57, 56],
-        borderWidth: 1,
-        borderColor: 'rgb(153, 204, 255)',
-        backgroundColor: 'rgb(153, 204, 255)'
-      }
-      ]
+      labels: [
+        "Janeiro",
+        "Fevereiro",
+        "Março",
+        "Abril",
+        "Maio",
+        "Junho",
+        "Julho",
+        "Agosto",
+        "Setembro",
+        "Outubro",
+        "Novembro",
+        "Dezembro",
+      ],
+      datasets: [
+        {
+          label: "Temperatura média (°C)",
+          data: [22, 29, 21, 23, 25, 19, 18, 20, 21, 24, 26, 27],
+          borderWidth: 1,
+          borderColor: "rgb(204, 229, 255)",
+          backgroundColor: "rgb(204, 229, 255)",
+        },
+        {
+          label: "Umidade média (%)",
+          data: [52, 49, 50, 47, 56, 52, 51, 52, 48, 51, 57, 56],
+          borderWidth: 1,
+          borderColor: "rgb(153, 204, 255)",
+          backgroundColor: "rgb(153, 204, 255)",
+        },
+      ],
     },
     options: {
       plugins: {
         title: {
           display: true,
-          text: 'Média de Temperatura e Umidade mensal',
-            color: '#fff',
-            font: {
-              size: 20 
-            }
-          
-        },legend: {
-                labels: {
-                    color: '#fff'
-                }
-            }
+          text: "Média de Temperatura e Umidade mensal",
+          color: "#fff",
+          font: {
+            size: 20,
+          },
+        },
+        legend: {
+          labels: {
+            color: "#fff",
+          },
+        },
       },
       scales: {
-            x: {
-                ticks: {
-                    color: '#fff' 
-                }
-            },
-            y: {
-                beginAtZero: true,
-                ticks: {
-                    color: '#fff' 
-                }
-            }
-        }
-    }
-});
+        x: {
+          ticks: {
+            color: "#fff",
+          },
+        },
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: "#fff",
+          },
+        },
+      },
+    },
+  });
 
-
-  const ctz = document.getElementById('myChart2');
+  const ctz = document.getElementById("myChart2");
 
   new Chart(ctz, {
-    type: 'pie',
+    type: "pie",
     data: {
-      labels: ['Dentro da faixa', 'Fora da faixa'],
-      datasets: [{
-        label: 'Porcentagem',
-        data: [71, 29],
-        borderWidth: 1,
-        backgroundColor: ['rgb(95, 196, 171)', 'rgb(255, 25, 115)'],
-        borderColor: ['rgb(95, 196, 171)', 'rgb(255, 25, 115)']
-      }]
+      labels: ["Dentro da faixa", "Fora da faixa"],
+      datasets: [
+        {
+          label: "Porcentagem",
+          data: [71, 29],
+          borderWidth: 1,
+          backgroundColor: ["rgb(95, 196, 171)", "rgb(255, 25, 115)"],
+          borderColor: ["rgb(95, 196, 171)", "rgb(255, 25, 115)"],
+        },
+      ],
     },
     options: {
       plugins: {
         title: {
           display: true,
-          text: 'Proporção da Faixa de Umidade por Tempo',
-          color: '#fff',
+          text: "Proporção da Faixa de Umidade por Tempo",
+          color: "#fff",
           font: {
-              size: 20 
-            }
-        },legend: {
-                labels: {
-                    color: '#fff'
-                }
-            }
+            size: 20,
+          },
+        },
+        legend: {
+          labels: {
+            color: "#fff",
+          },
+        },
       },
       scales: {
         y: {
           beginAtZero: true,
-          ticks:{
-            color: '#fff'
-          }
-        }
-      }
-    }
+          ticks: {
+            color: "#fff",
+          },
+        },
+      },
+    },
   });
 
-  const cta = document.getElementById('myChart3');
+  const cta = document.getElementById("myChart3");
 
   new Chart(cta, {
-    type: 'pie',
+    type: "pie",
     data: {
-      labels: ['Dentro da faixa', 'Fora da faixa'],
-      datasets: [{
-        label: 'Porcentagem',
-        data: [58, 42],
-        borderWidth: 1,
-        backgroundColor: ['rgb(95, 196, 171)', 'rgb(255, 25, 115)'],
-        borderColor: ['rgb(95, 196, 171)', 'rgb(255, 25, 115)']
-      }]
+      labels: ["Dentro da faixa", "Fora da faixa"],
+      datasets: [
+        {
+          label: "Porcentagem",
+          data: [58, 42],
+          borderWidth: 1,
+          backgroundColor: ["rgb(95, 196, 171)", "rgb(255, 25, 115)"],
+          borderColor: ["rgb(95, 196, 171)", "rgb(255, 25, 115)"],
+        },
+      ],
     },
     options: {
       plugins: {
         title: {
           display: true,
-          text: 'Proporção da Faixa de Temperatura por Tempo',
-            color: '#fff',
-            font: {
-              size: 20 
-            }
-        
-        },legend: {
-                labels: {
-                    color: '#fff'
-                }
-            }
+          text: "Proporção da Faixa de Temperatura por Tempo",
+          color: "#fff",
+          font: {
+            size: 20,
+          },
+        },
+        legend: {
+          labels: {
+            color: "#fff",
+          },
+        },
       },
       scales: {
         y: {
           beginAtZero: true,
-          ticks:{
-            color: '#fff'
-          }
-        }
-      }
-    }
+          ticks: {
+            color: "#fff",
+          },
+        },
+      },
+    },
   });
-
-
 </script>
