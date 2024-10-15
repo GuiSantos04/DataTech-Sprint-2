@@ -168,3 +168,14 @@ footer span{
 	color: white;
 	font-size: 12px;
 }
+
+.input-container{
+    display: flex;
+    align-items: center;
+   
+}
+
+.input-container i{
+    margin-right: 15px;
+    font-size: 20px;
+}

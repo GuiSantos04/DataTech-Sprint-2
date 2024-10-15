@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="./js/script.js"></script>
-    <link rel="stylesheet" href="./css/style-login-cadastro.css" />
-  </head>
-  <body id="estrutura_login">
-    <header>
-      <a href="index.html"><img src="./img/logo-png.png" class="logo" /></a>
-    </header>
-    <div class="container-login">
-      <div class="card login">
-        <h1>Entrar</h1>
-        <div class="formulario">
-          <div class="campo">
-            <span>Usuário:</span>
-            <input
-              type="text"
-              id="ipt_login"
-              placeholder="Digite seu usuário"
-            />
-          </div>
 
-          <div class="campo">
-            <span>Senha:</span>
-            <input
-              type="password"
-              class="senha"
-              id="ipt_senha_login"
-              placeholder="Digite sua senha"
-            />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="./js/script.js"></script>
+  <link rel="stylesheet" href="./css/style-login-cadastro.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body id="estrutura_login">
+  <header>
+    <a href="index.html"><img src="./img/logo-png.png" class="logo" /></a>
+  </header>
+  <div class="container-login">
+    <div class="card login">
+      <h1>Entrar</h1>
+      <div class="formulario">
+        <div class="campo">
+
+          <span>Usuário:</span>
+          <div class="input-container"><i class="fas fa-user"></i>
+
+            <input type="text" id="ipt_login" placeholder="Digite seu usuário" />
           </div>
         </div>
-        <a class="button" onclick="logar()">Entrar</a>
-        <a class="button" href="cadastro.html">Não tem cadastro?</a>
-      </div>
-    </div>
 
-    <footer>
-      <span> &copy; 2024 DataTech Security </span>
-    </footer>
-  </body>
+        <div class="campo">
+          <span>Senha:</span>
+          <div class="input-container"><i class="fas fa-lock"></i>
+            <input type="password" class="senha" id="ipt_senha_login" placeholder="Digite sua senha" />
+          </div>
+        </div>
+      </div>
+      <a class="button" onclick="logar()">Entrar</a>
+      <a class="button" href="cadastro.html">Não tem cadastro?</a>
+    </div>
+  </div>
+
+  <footer>
+    <span> &copy; 2024 DataTech Security </span>
+  </footer>
+</body>
+
 </html>
