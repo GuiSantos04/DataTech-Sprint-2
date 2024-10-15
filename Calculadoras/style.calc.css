@@ -77,15 +77,13 @@ h1{
    margin-bottom: 15px;
 }
 
-.botao {
+.botao, .voltar {
     cursor: pointer;
     border: 1px solid white;
     border-radius: 2px;
     font-size: 18px;
     color: rgb(255, 255, 255);
     background-color: transparent;
-    width: 30%;
-    height: 30px;
     align-self: center;
     margin-top: 10px;
     font-size: smaller;
@@ -94,8 +92,16 @@ h1{
     padding: 10px;
     border-radius: 5px;
     line-height: 10px;
-
+    text-decoration: none;
+   
 }
+
+.voltar{
+    line-height: 12px;
+    width: 10%;
+    height: 12px;
+}
+
 
 .botao:hover {
 
