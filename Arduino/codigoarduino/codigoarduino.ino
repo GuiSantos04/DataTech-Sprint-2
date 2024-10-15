@@ -24,19 +24,12 @@ if (isnan(temperatura) || isnan (umidade)) { //insere um sistema de decisão
 
 } else {
 
-  // Serial.print("max:");
-  // //Serial.print(tempmax);
-  // Serial.print(", ");
-  // //Serial.print("umidademax:");
-  // Serial.print(umimax);
-  // Serial.print(", ");
-  //Serial.print("Umidade:");
   Serial.print(umidade);
-  // Serial.print ("% ");
+
   Serial.print(";");
-  // Serial.print("Temperatura:");
+
   Serial.println(temperatura);
-  //Serial.println("ºC");
+
 }
 
 delay (2000);
