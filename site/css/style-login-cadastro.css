@@ -172,10 +172,19 @@ footer span{
 .input-container{
     display: flex;
     align-items: center;
+    text-align: center;
+    position: relative;
    
 }
 
 .input-container i{
     margin-right: 15px;
     font-size: 20px;
+    position: absolute;
+}
+
+.input-container input{
+    margin-left: 30px;
+    margin-right: 30px;
+
 }
