@@ -144,6 +144,7 @@ function cadastrar() {
     alert("O nome de usuário não pode conter caracteres especiais nem espaço!");
   } else if (
     tamanho_senha >= 8 &&
+    tamanho_senha <= 12 &&
     minuscula_senha != senha &&
     maiuscula_senha != senha &&
     (especial_exclamacao ||
