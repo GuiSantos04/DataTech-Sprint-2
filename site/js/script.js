@@ -135,7 +135,7 @@ function cadastrar() {
     especial_ecomercial_user ||
     user_sem_espaco != usuario
   ) {
-    alert("O nome de usuário não pode conter caracteres especiais nem espaço!");
+    alert("O nome de usuário não pode conter nenhum desses caracteres especiais (!, @, #, $, %, &) nem espaço!");
   } else if (
     tamanho_senha >= 8 &&
     tamanho_senha <= 12 &&
@@ -178,7 +178,7 @@ function cadastrar() {
         </footer>`;
   } else {
     alert(
-      "A senha deve conter ao menos: \n- 1 letra Maiuscula \n- 1 letra minuscula \n- 1 número \n- 1 caractere especial; \n A confirmação deve ser igual a senha descrita no campo anterior!"
+      "A senha deve conter ao menos: \n- 1 letra Maiuscula \n- 1 letra minuscula \n- 1 número \n- 1 caractere especial (!, @, #, $, %, &); \n A confirmação deve ser igual a senha descrita no campo anterior!"
     );
   }
 }
