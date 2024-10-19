@@ -6,7 +6,7 @@ function logar() {
   var senhaLogin = ipt_senha_login.value;
   var mensagem = "";
 
-  if(login == "Frizza" && senhaLogin == "Frizza@12345"){
+  if (login == "Frizza" && senhaLogin == "Frizza@12345") {
     estrutura_login.innerHTML = `<header>
         <img src="./img/logo-png.png" class="logo">
     </header>
@@ -24,7 +24,7 @@ function logar() {
         <span> &copy; 2024 DataTech Security </span>
     </footer>`;
   } else {
-    alert("Algo deu errado! \nCredenciais devem ser iguais a do cadastro!")
+    alert("Algo deu errado! \nCredenciais devem ser iguais a do cadastro!");
   }
 }
 
@@ -39,7 +39,6 @@ function cadastrar() {
   var estado = ipt_estado.value;
   var email = ipt_email.value;
   var cnpj = ipt_cnpj.value;
-  var tamanho = ipt_tamanho.value;
   var usuario = ipt_usuario.value;
   var senha = ipt_senha.value;
   var comfirmacao = ipt_confirmacao.value;
@@ -70,7 +69,6 @@ function cadastrar() {
   var tam_empresa = empresa.length;
   var tam_nome = nome.length;
   var tam_cnpj = cnpj.length;
-  var tam_tamanho = tamanho.length;
   var tam_repre = repre.length;
   var tam_cep = cep.length;
   var tam_num = num.length;
@@ -103,7 +101,6 @@ function cadastrar() {
 
   //VALIDAÇÂO TAMANHO
   if (
-    tam_tamanho == 0 ||
     tam_num == 0 ||
     tam_email == 0 ||
     tam_empresa == 0 ||
@@ -123,13 +120,10 @@ function cadastrar() {
     alert("O número deve ser um valor inteiro!");
   } else if (tam_cnpj < 14 || cnpj_int != cnpj || cnpj < 0) {
     alert("O CNPJ deve ser um número inteiro com 14 digítos!");
-  } else if (tamanho < 0) {
-    alert("O tamanho do DataCenter deve ser um número positivo!");
   } else if (
     arroba_email == false ||
     posi_arroba > posi_com ||
-    (com_email == false && 
-    br_email == false)
+    (com_email == false && br_email == false)
   ) {
     alert("O email deve terminar com '.com' ou '.br' \n Deve conter '@' ");
   } else if (
@@ -165,23 +159,23 @@ function cadastrar() {
       nove_senha) &&
     senha == comfirmacao
   ) {
-    estrutura.innerHTML = `<header>
-        <img src="./img/logo-png.png" class="logo">
-    </header>
-    <div class="container-login">
-        <div class="card cadastro">
-            <h1>Cadastro realizado com sucesso!</h1>
-            <a href="login.html"><img width="100px" src="./img/verificar.png"></a>
-
-            <div class=cadastro_realizado>
-                <span>Clique no botão verde para ser redirecionado a tela tela de login.</span>
+    estrutura.innerHTML = `
+        <header>
+            <img src="./img/logo-png.png" class="logo">
+        </header>
+        <div class="container-login">
+            <div class="card cadastro">
+                <h1>Cadastro realizado com sucesso!</h1>
+                <a href="login.html"><img width="100px" src="./img/verificar.png"></a>
+      
+                <div class=cadastro_realizado>
+                    <span>Clique no botão verde para ser redirecionado a tela tela de login.</span>
+                </div>
             </div>
         </div>
-    </div>
-    <footer>
-        <span> &copy; 2024 DataTech Security </span>
-    </footer>`;
-
+        <footer>
+            <span> &copy; 2024 DataTech Security </span>
+        </footer>`;
   } else {
     alert(
       "A senha deve conter ao menos: \n- 1 letra Maiuscula \n- 1 letra minuscula \n- 1 número \n- 1 caractere especial; \n A confirmação deve ser igual a senha descrita no campo anterior!"

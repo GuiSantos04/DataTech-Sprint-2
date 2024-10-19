@@ -67,7 +67,7 @@ header{
     flex-direction: row;
     width: 90%;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin-bottom: 2rem;
     gap: 70px;
  
 }
@@ -117,13 +117,14 @@ header{
     font-size: 18px;
     color: rgb(255, 255, 255);
     background-color: transparent;
-    width: 40%;
-    height: 2rem;
+    padding: 0.6rem 2rem;
+    /* width: 40%; */
+    /* height: 2rem; */
     align-self: center;
-    margin-top: 10px;
-    font-size: smaller;
+    margin-top: 1rem;
+    font-size: 1rem;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
     transition: all 0.3s ease;
     text-align: center;
     align-items: center;
