@@ -67,15 +67,15 @@ constraint fkParaSen foreign key (fkParam) references parametros(idParametros)
 desc sensor;
 
 CREATE TABLE leitura (
-idLeitura int auto_increment, 
-fkSensor int,
-primary key(idLeitura, fkSensor),
+idLeitura int primary key auto_increment, 
 DataHora datetime,
-umidade float(5,2),
-temperatura float (5,2),
-constraint fkLtSen foreign key (fkSensor) references sensor(idSensor)
+temperatura float(5,2),
+umidade float (5,2),
+fkSensor int,
+constraint fksensleit foreign key(fkSensor) references sensor(idSensor)
 );
 
+drop table leitura;
 desc leitura;
 
 INSERT INTO endereco(Cep, Numero, Cidade, Estado) VALUES
@@ -119,12 +119,12 @@ INSERT INTO sensor(LocINstal, StatusSensor, dtInstal, dtUltManut, fkDC, fkParam)
 
 select*from sensor;
 
-INSERT INTO leitura VALUES
-(default, 1101, default, 43.00, 23.00),
-(default, 1102, default, 52.00, 18.00 ),
-(default, 1103, default, 51.00 , 19.00 ),
-(default, 1104, default, 53.00, 17.00 ),
-(default, 1105, default, 32.00, 25.00 );
+INSERT INTO leitura (temperatura, umidade) VALUES
+(23.00, 43.00),
+(18.00, 52.00 ),
+(19.00 , 51.00 ),
+(17.00, 53.00 ),
+(25.00, 32.00 );
 
 SELECT 
     *
