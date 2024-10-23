@@ -119,18 +119,20 @@ INSERT INTO sensor(LocINstal, StatusSensor, dtInstal, dtUltManut, fkDC, fkParam)
 
 select*from sensor;
 
-INSERT INTO leitura (temperatura, umidade) VALUES
-(23.00, 43.00),
-(18.00, 52.00 ),
-(19.00 , 51.00 ),
-(17.00, 53.00 ),
-(25.00, 32.00 );
+INSERT INTO leitura (temperatura, umidade, fkSensor) VALUES
+(23.00, 43.00, 1103),
+(18.00, 52.00, 1103),
+(19.00 , 51.00, 1104),
+(17.00, 53.00, 1102),
+(25.00, 32.00, 1101);
 
 SELECT 
     *
 FROM
     leitura;
 
+SELECT s.statusSensor as 'Status', s.dtUltManut as 'Data última manutenção', 
+l.temperatura, l.umidade, l.fkSensor as 'idSensor' from leitura as l join sensor as s ON s.idSensor = l.fkSensor;
 
 SELECT 
     e.NomeFantasia AS 'Empresa',
