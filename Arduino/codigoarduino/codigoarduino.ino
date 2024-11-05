@@ -23,7 +23,12 @@ if (isnan(temperatura) || isnan (umidade)) { //insere um sistema de decisão
   Serial.println("Erro ao ler os dados do sensor");
 
 } else {
-
+  if(umidade > 100){
+    umidade = 100;
+  }
+  if(temperatura > 100){
+    temperatura = 100;
+  }
   Serial.print(umidade);
 
   Serial.print(";");
