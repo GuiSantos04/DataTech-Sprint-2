@@ -6,47 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard DataTech</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="./css/style-index.css" />
+    <link rel="stylesheet" href="./css/style-indexxxx.css" />
 </head>
 
 <body>
-    <header class="cabecalho">
+    <!-- <header class="cabecalho">
         <img class="logo" src="./img/logo-png.png" alt="Logo DataTech" />
         <nav>
             <a href="./index.html">Início</a>
             <a href="./sobrenos.html">Sobre nós</a>
             <a href="./login.html">Sair</a>
         </nav>
-    </header>
-    <main>
-        <section>
+    </header> -->
+    <main class="dash">
+
+        <section class="conteudo-dash">
+            <nav class="lateral">
+                <a href="./index.html">Início</a>
+                <a href="./sobrenos.html">Sobre nós</a>
+                <a href="./login.html">Sair</a>
+            </nav>
+
             <div class="dashboard-conteudo">
                 <h1>Dashboards de Monitoramento</h1>
                 <div class="chart">
-                    <div class="chart-container">
 
+                    <div class="chart-container">
+                        <div class="kpi">
+                            <div class="quadradinho">Alertas</div>
+                            <div class="quadradinho">Média Diaria</div>
+                        </div>
                         <canvas id="myChart"></canvas>
                     </div>
                     <div class="chart-container">
+                        <div class="kpi">
+                            <div class="quadradinho">Alertas</div>
+                            <div class="quadradinho">Média Diaria</div>
+                        </div>
                         <canvas id="myChart4"></canvas>
                     </div>
-                    <!-- <div class="chart-container">
-            <canvas id="myChart1"></canvas>
-          </div>
-        </div>
-        <div class="chart">
-          <div class="chart-container">
-            <canvas id="myChart2"></canvas>
-          </div>
-          <div class="chart-container">
-            <canvas id="myChart3"></canvas>
-          </div> -->
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="rodape">
         <span> &copy; 2024 DataTech Security </span>
     </footer>
 </body>
