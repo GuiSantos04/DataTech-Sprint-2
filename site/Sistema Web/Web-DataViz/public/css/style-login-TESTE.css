@@ -5,14 +5,19 @@
     padding: 0;
 }
 body {
-    background-image: url('../img/DataTech\ Company\ Presentation.png');
+    background-image: url('../img/Data-Center-coracao-tecnologico_2-1024x493.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
+    background-attachment:fixed;
+    width: auto;
+    height: 100%;
     font-family: 'Poppins', sans-serif;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: column
 
-}
+}   
 
 .logo{
     width: 10%;
@@ -23,6 +28,9 @@ body {
 
 .header{
     background-color: rgba(0, 0, 0, 0.5);    
+header{
+    background-color: rgba(0, 0, 0, 0.9);
+    
 }
 
 .container-cadastro{
@@ -48,6 +56,12 @@ body {
 .card{
     width: 40%;
     background: linear-gradient(to right,  rgba(0, 0, 0, 0.9), rgba(7, 30, 105, 0.9));
+    width: 40%;
+    height: 70%;
+    box-shadow: 0, 4px, 8px; color : black;
+    background-color: rgba(0, 0, 0, 0.9);
+    border: solid 5px rgb(23, 57, 84);
+    /*background-color: rgb(0,0,92);*/
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -58,7 +72,11 @@ body {
     padding:  20px 0px;  
 }
 
+ .cadastro{
+    width: 40%;
+    height: 7000%;
 
+}
 
 .formulario-cadastro{
     display: flex;
@@ -112,6 +130,14 @@ body {
     /* background-color: rgba(255, 255, 255, 0.8); */
     background: transparent;
     color: #ffffff;
+.formulario input, .formulario-cadastro input{
+    border: 2px solid rgb(23, 57, 84);
+    text-align: center;
+    border-radius: 10px;
+    margin: 0;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: rgb(23, 57, 84);
     font-size: 15px;
     width: 85%;
 }
@@ -121,6 +147,17 @@ body {
     align-items: center;
     flex-direction: column;
     width: 100%;
+}
+.campocad{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.campocad{
+    display: flex;
+    flex-direction: column;
+    padding: 55px 0;
 }
 
 .button{
@@ -155,7 +192,14 @@ body {
 span {
     text-align: center;
 }
+.spn{
+    font-size: 1.6rem;
 
+}
+
+.entrar{
+    font-size: 2.3rem;
+}
 h1 {
     margin-bottom: 25px;
 }
@@ -171,7 +215,7 @@ h1 {
 }
 
 footer{
-	background-color: #00569e;
+	background-color: rgba(0, 0, 0, 0.9);
 	padding: 20px 0;
 	width: 100%;
 	text-align: center;
@@ -200,5 +244,6 @@ footer span{
 .input-container input{
     margin-left: 30px;
     margin-right: 30px;
+    
 
 }
