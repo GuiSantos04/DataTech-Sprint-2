@@ -89,7 +89,7 @@ body {
   gap: 70px;
 }
 .formulario-cadastro .ipt_cadastro::placeholder {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .formulario {
@@ -129,7 +129,7 @@ body {
   /* border-radius: 10px; */
   height: 2rem;
   /* background-color: rgba(255, 255, 255, 0.8); */
-  background: transparent;
+  background: rgba(255, 255, 255, 0.201);
   color: #ffffff;
 }
 /* 
