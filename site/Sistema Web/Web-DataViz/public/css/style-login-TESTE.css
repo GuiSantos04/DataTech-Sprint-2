@@ -28,12 +28,11 @@ body {
 }
 
 .header{
-    background-color: rgba(0, 0, 0, 0.5);    }
+    background-color: rgba(0, 0, 0, 0.9);  
+  }
 
-    header{
-    background-color: rgba(0, 0, 0, 0.9);
-    
-}
+
+
 
 .container-cadastro{
     display: flex;
@@ -117,7 +116,7 @@ body {
     width: 100%;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 
