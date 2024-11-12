@@ -21,9 +21,8 @@ body {
     padding: 10px;
 }
 
-header{
-    background-color: rgba(0, 0, 0, 0.8);
-    
+.header{
+    background-color: rgba(0, 0, 0, 0.5);    
 }
 
 .container-cadastro{
@@ -47,8 +46,8 @@ header{
 
 
 .card{
-    width: 30%;
-    background: linear-gradient(to right,  rgba(0, 181, 248, 0.8), rgba(48, 73, 154, 0.5));
+    width: 40%;
+    background: linear-gradient(to right,  rgba(0, 0, 0, 0.9), rgba(7, 30, 105, 0.9));
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -64,8 +63,9 @@ header{
 .formulario-cadastro{
     display: flex;
     height: 90%;
-    flex-direction: row;
+    flex-direction: column;
     width: 90%;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 2rem;
     gap: 70px;
@@ -78,36 +78,49 @@ header{
     flex-direction: column;
     width: 80%;
     justify-content: space-between;
-    margin-bottom: 15px;
+    gap: 1rem;
 }
+.link-cadastro{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    
+}
+
+.link-cadastro:hover{
+    color: rgb(88, 108, 174);
+}
+
 
 .form-column {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     justify-content: center;
     align-items: center;
-    
+    gap: 1rem;
 }
 
 
-.formulario input, .formulario-cadastro input{
-    border: 2px solid #32b9cd;
-    text-align: center;
-    border-radius: 10px;
-    margin: 0;
-    height: 25px;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #000;
+.formulario input, .formulario-cadastro .ipt_cadastro{
+    outline: none;
+    border: none; 
+    border-bottom: 2px solid #32b9cd;
+    text-align: left;
+    padding-left: 5px;
+    /* border-radius: 10px; */
+    height: 2rem;
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    background: transparent;
+    color: #ffffff;
     font-size: 15px;
-    padding: 2px;
-    width: 100%;
+    width: 85%;
 }
 
 .campo{
     display: flex;
+    align-items: center;
     flex-direction: column;
-    padding: 5px 0;
+    width: 100%;
 }
 
 .button{

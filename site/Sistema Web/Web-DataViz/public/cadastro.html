@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +9,7 @@
   </head>
 
   <body id="estrutura">
-    <header>
+    <header class="header">
       <a href="index.html"><img src="./img/logo-png.png" class="logo" /></a>
     </header>
     <div class="container-cadastro">
@@ -20,6 +20,7 @@
             <div class="campo">
               <span>Razão social:</span>
               <input
+              class="ipt_cadastro"
                 type="text"
                 id="ipt_empresa"
                 placeholder="Razão social da empresa"
@@ -29,6 +30,7 @@
             <div class="campo">
               <span>Nome fantasia:</span>
               <input
+              class="ipt_cadastro"
                 type="text"
                 id="ipt_nome"
                 placeholder="Nome comercial da empresa"
@@ -37,6 +39,7 @@
             <div class="campo">
               <span>Representante legal:</span>
               <input
+              class="ipt_cadastro"
                 type="text"
                 id="ipt_repre"
                 placeholder="Nome do responsável"
@@ -45,6 +48,7 @@
             <div class="campo">
               <span>E-mail:</span>
               <input
+              class="ipt_cadastro"
                 type="email"
                 id="ipt_email"
                 placeholder="contato@empresa.com"
@@ -52,11 +56,17 @@
             </div>
             <div class="campo">
               <span>CNPJ:</span>
-              <input type="number" id="ipt_cnpj" placeholder="00000000000000" />
+              <input
+              class="ipt_cadastro"
+              type="number" 
+              id="ipt_cnpj" 
+              placeholder="00000000000000" 
+              />
             </div>
             <div class="campo">
               <span>Usuário</span>
               <input
+              class="ipt_cadastro"
                 type="text"
                 id="ipt_usuario"
                 placeholder="Nome de usuário"
@@ -65,6 +75,7 @@
             <div class="campo">
               <span>Senha</span>
               <input
+              class="ipt_cadastro"
                 type="password"
                 id="ipt_senha"
                 placeholder="Crie uma senha segura"
@@ -73,6 +84,7 @@
             <div class="campo">
               <span>Confirme sua senha</span>
               <input
+              class="ipt_cadastro"
                 type="password"
                 id="ipt_confirmacao"
                 placeholder="Digite a senha novamente"
@@ -80,7 +92,7 @@
             </div>
           </div>
         </div>
-        <button onclick="cadastrar()" class="button">Seguinte</button>
+        <button id="btn_seguinte" onclick="cadastrar()" class="button">Seguinte</button>
         <a class="button" href="login.html">Voltar</a>
       </div>
     </div>
