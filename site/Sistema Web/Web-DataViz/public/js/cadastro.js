@@ -78,7 +78,7 @@ fetch("/usuarios/cadastrar", {
       empresaServer: empresa,
       nomeServer: nome,
       repreServer: repre,
-      cnjpServer: cnpj,
+      cnpjServer: cnpj,
       emailServer: email,
       usuarioServer: usuario,
       senhaServer: senha,
