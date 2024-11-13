@@ -88,6 +88,80 @@ fetch("/usuarios/cadastrar", {
       console.log("resposta: ", resposta);
 
       if (resposta.ok) {
+
+        var cep = ipt_cep.value;
+        var num = ipt_num.value;
+        var cidade = ipt_cidade.value;
+        var estado = ipt_estado.value;
+        var tam_cep = cep.length;
+        var tam_num = num.length;
+        var tam_cidade = cidade.length;
+        var tam_estado = estado.length;
+        var cep_int = parseInt(cep);
+        var num_int = parseInt(num);
+      
+        if (
+          tam_num == 0 ||
+          tam_cep == 0 ||
+          tam_cidade == 0 ||
+          tam_estado == 0
+        ) {
+          alert("Todos os campos devem ser inseridos!");
+        } else if (tam_cep < 8 || cep_int != cep || cep < 0) {
+          alert("O CEP deve ser um número inteiro com 8 digítos!");
+        } else if (num_int != num || num < 0) {
+          alert("O número deve ser um valor inteiro!");
+        } else{
+          estrutura.innerHTML = `
+             <header>
+                 <img src="./img/logo-png.png" class="logo">
+             </header>
+             <div class="container-login">
+                 <div class="card cadastro">
+                     <h1>Cadastro realizado com sucesso!</h1>
+                     <a href="login.html"><img width="100px" src="./img/verificar.png"></a>
+                     <div class=cadastro_realizado>
+                         <span>Clique no botão verde para ser redirecionado a tela tela de login.</span>
+                     </div>
+                 </div>
+             </div>
+             <footer>
+                 <span> &copy; 2024 DataTech Security </span>
+             </footer>`;
+
+             fetch("/enderecos/cadastrar", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  // crie um atributo que recebe o valor recuperado aqui
+                  // Agora vá para o arquivo routes/usuario.js
+                  empresaServer: empresa,
+                  nomeServer: nome,
+                  repreServer: repre,
+                  cnpjServer: cnpj,
+                  emailServer: email,
+                  usuarioServer: usuario,
+                  senhaServer: senha,
+                }),
+              })
+                .then(function (resposta) {
+                  console.log("resposta: ", resposta);
+            
+                  if (resposta.ok) {
+
+                  } else {
+
+                  }
+        
+                }).catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          finalizarAguardar();
+        });
+    
+      return false;
+    }
         cardErro.style.display = "block";
 
         mensagem_erro.innerHTML =
