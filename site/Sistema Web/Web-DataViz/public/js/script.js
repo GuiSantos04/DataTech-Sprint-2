@@ -2,30 +2,9 @@ var user = "";
 var passwd = "";
 
 function logar() {
-  var login = ipt_login.value;
-  var senhaLogin = ipt_senha_login.value;
+  var usuario = ipt_login.value;
+  var senha = ipt_senha_login.value;
   var mensagem = "";
-
-  if (login == "Frizza" && senhaLogin == "Frizza@12345") {
-    estrutura_login.innerHTML = `
-    <header>
-        <img src="./img/logo-png.png" class="logo">
-    </header>
-    <div class="container-login">
-        <div class="card cadastro">
-            <h1>Bem vindo ${login}!</h1>
-            <a href="Dash-Teste.html"><img width="100px" src="./img/verificar.png"></a>
-            <div class=cadastro_realizado>
-                <span>Clique no botão verde para ser redirecionado a sua página.</span>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <span> &copy; 2024 DataTech Security </span>
-    </footer>`;
-  } else {
-    alert("Algo deu errado! \nCredenciais devem ser iguais a do cadastro!");
-  }
 
   fetch("/usuarios/autenticar", {
     method: "POST",
@@ -50,7 +29,7 @@ function logar() {
             sessionStorage.ID_USUARIO = json.id;
 
             setTimeout(function () {
-                window.location = "formulario.html";
+                window.location = "Dash-Teste.html";
             }, 1000); // apenas para exibir o loading
 
         });
@@ -61,7 +40,7 @@ function logar() {
 
         resposta.text().then(texto => {
             console.error(texto);
-            finalizarAguardar(texto);
+            //finalizarAguardar(texto);
         });
     }
 

@@ -20,12 +20,15 @@ Representante varchar(45),
 CNPJ char(14),
 Email varchar(45),
 Usuario char(20),
-Senha char(12),
-PalavraChave varchar(45),
-fkEndereco int unique, 
-constraint fkEndEmp foreign key (fkEndereco) references endereco(idEndereco)
+Senha char(12)
 );
+select * from empresa;
 
+delete from empresa where idEmpresa = 1;
+
+
+INSERT INTO empresa (RazaoSocial, NomeFantasia, Representante, CNPJ, Email, Usuario, Senha) VALUES
+ ('oi', 'oio', 'oii', '01827364536271', 'sptech@gmail.com' 'teste', 'Gui@12345');
 
 desc empresa;
 
@@ -151,3 +154,5 @@ FROM
     sensor AS s ON s.fkDC = dc.idDC
         JOIN
     leitura AS l ON l.fkSensor = s.idSensor;
+    
+    INSERT INTO empresa (empresa, nome, repre, cnpj, email, usuario, senha) VALUES ('oi', 'oio', 'oi', 'undefined', 'ajjdsjk@gmail.com' 'guiiii', 'Sptech@12');
