@@ -156,3 +156,5 @@ FROM
     leitura AS l ON l.fkSensor = s.idSensor;
     
     INSERT INTO empresa (empresa, nome, repre, cnpj, email, usuario, senha) VALUES ('oi', 'oio', 'oi', 'undefined', 'ajjdsjk@gmail.com' 'guiiii', 'Sptech@12');
+
+SELECT * FROM empresa;
