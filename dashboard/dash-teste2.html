@@ -21,9 +21,11 @@
 
         <section class="conteudo-dash">
             <nav class="lateral">
-                <img class="logo" src="./img/logo-png.png" alt="Logo DataTech" />
-                <p>Bem vindo, Usuário!</p>
-                <img src="" alt="logo cliente">
+                <img class="logo" src="../site/Sistema Web/Web-DataViz/public/img/logo-png.png" alt="Logo DataTech" />
+                <div class="info-usuario">
+                  <img class="img-usuario" src="../site/Sistema Web/Web-DataViz/public/img/user-icon-design-free-png.webp" alt="logo cliente">
+                  <p>Bem vindo, <span class="nome-usuario">Frizza!</span></p>
+                </div>
                 <a href="">Histórico</a>
                 <a href="./login.html">Sair</a>
             </nav>
@@ -73,8 +75,8 @@
 
                     </div>
                     <div class="kpi">
-                        <div class="quadradinho">Alertas</div>
-                        <div class="quadradinho">Média Diaria</div>
+                        <div class="quadradinho temperatura">28°C</div>
+                        <div class="quadradinho umidade">65%</div>
                     </div>
                     <div class="chart-container" id="graficos">
                         <canvas  id="myChart"></canvas>
@@ -88,9 +90,9 @@
         </section>
     </main>
 
-    <footer class="rodape">
+    <!-- <footer class="rodape">
         <span> &copy; 2024 DataTech Security </span>
-    </footer>
+    </footer> -->
 </body>
 
 </html>
@@ -122,12 +124,51 @@
         plugins: {
           title: {
             display: true,
-            text: 'Variação de temperatura e umidade por dia'
+            text: 'Variação de temperatura e umidade por dia',
+            color: 'rgb(255, 255, 255)',
+            font: {
+              size: 24
+            },
+            padding: {
+              bottom: 40
+            }
+          },
+          legend:{
+          labels: {
+            color: 'rgb(255, 255, 255)',
+            font: {
+              size: 16
+            }
           }
+        }
         },
         scales: {
+          x: {
+                ticks: {
+                    color: 'rgb(255, 255, 255)',
+                },
+                title: {
+                    display: true,
+                    text: 'horas',
+                    color: 'rgb(255, 255, 255)',
+                    font: {
+                      size: 16
+                    }
+                }
+            },
           y: {
-            beginAtZero: true
+            beginAtZero: true,
+            ticks: {
+                    color: 'rgb(255, 255, 255)',
+                },
+                title: {
+                    display: true,
+                    text: 'medida',
+                    color: 'rgb(255, 255, 255)',
+                    font: {
+                      size: 16
+                    }
+                }
           }
         }
       }
