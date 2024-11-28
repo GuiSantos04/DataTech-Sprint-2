@@ -88,6 +88,7 @@ body {
   margin-bottom: 2rem;
   gap: 70px;
 }
+
 .formulario-cadastro .ipt_cadastro::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
@@ -132,7 +133,7 @@ body {
   background: rgba(255, 255, 255, 0.201);
   color: #ffffff;
 }
-
+/* 
 .formulario input, .formulario-cadastro input{
     border: 2px solid rgb(23, 57, 84);
     text-align: center;
@@ -143,7 +144,7 @@ body {
     color: rgb(23, 57, 84);
     font-size: 15px;
     width: 85%;
-}
+} */
 
 .campo {
   display: flex;
