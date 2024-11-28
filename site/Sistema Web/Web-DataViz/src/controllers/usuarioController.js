@@ -67,7 +67,12 @@ function cadastrar(req, res) {
     var cnpj = req.body.cnpjServer;
     var empresa = req.body.empresaServer;
     var usuario = req.body.usuarioServer;
-
+    var unidade = req.body.unidadeServer;
+    var tam = req.body.tamanhoServer;
+    var cep = req.body.cepServer;
+    var num = req.body.numServer;
+    var cidade = req.body.cidadeServer;
+    var estado = req.body.estadoServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -79,7 +84,7 @@ function cadastrar(req, res) {
     } else{
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(empresa, nome, repre, cnpj, email, usuario, senha)
+        usuarioModel.cadastrar(empresa, nome, repre, cnpj, email, usuario, senha, unidade, tam, cep, num, cidade, estado)
             .then(
                 function (resultado) {
                     res.json(resultado);

@@ -21,11 +21,9 @@ CNPJ char(14),
 Email varchar(45),
 Usuario char(20),
 Senha char(12),
-PalavraChave varchar(45),
 fkEndereco int unique, 
 constraint fkEndEmp foreign key (fkEndereco) references endereco(idEndereco)
 );
-
 
 desc empresa;
 

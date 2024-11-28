@@ -26,7 +26,6 @@
                 placeholder="Razão social da empresa"
               />
             </div>
-
             <div class="campo">
               <span>Nome fantasia</span>
               <input
@@ -34,6 +33,24 @@
                 type="text"
                 id="ipt_nome"
                 placeholder="Nome comercial da empresa"
+              />
+            </div>
+            <div class="campo">
+              <span>Unidade</span>
+              <input
+              class="ipt_cadastro"
+                type="text"
+                id="ipt_unidade"
+                placeholder="Nome da unidade do Datacenter"
+              />
+            </div>
+            <div class="campo">
+              <span>Tamanho Datacenter</span>
+              <input
+              class="ipt_cadastro"
+                type="number"
+                id="ipt_tam"
+                placeholder="Tamanho (m²)"
               />
             </div>
             <div class="campo">
@@ -61,6 +78,32 @@
               type="number" 
               id="ipt_cnpj" 
               placeholder="00000000000000" 
+              />
+            </div>
+            <div class="campo">
+              <span>CEP:</span>
+              <input type="number" class="ipt_cadastro" id="ipt_cep" placeholder="00000000" />
+            </div>
+            <div class="campo">
+              <span>Número:</span>
+              <input type="number" class="ipt_cadastro" id="ipt_num" placeholder="Digite o número" />
+            </div>
+            <div class="campo">
+              <span>Cidade:</span>
+              <input
+                type="text"
+                class="ipt_cadastro"
+                id="ipt_cidade"
+                placeholder="Digite a cidade"
+              />
+            </div>
+            <div class="campo">
+              <span>Estado:</span>
+              <input
+                type="text"
+                class="ipt_cadastro"
+                id="ipt_estado"
+                placeholder="Digite o Estado"
               />
             </div>
             <div class="campo">
@@ -92,41 +135,14 @@
             </div>
           </div>
         </div>
-        <button id="btn_seguinte" onclick="cadastrar()" class="button">Seguinte</button>
-        <a class="button" href="login.html">Voltar</a>
+        <button id="btn_seguinte" onclick="cadastrar()" class="button">Cadastrar</button>
+        <a class="button" href="login-Teste.html">Voltar</a>
       </div>
     </div>
 
-    <footer>
+    <footer class="rodape">
       <span> &copy; 2024 DataTech Security </span>
     </footer>
   </body>
 </html>
 
-
-<!-- <div class="campo">
-  <span>CEP:</span>
-  <input type="number" id="ipt_cep" placeholder="00000000" />
-</div>
-<div class="campo">
-  <span>Número:</span>
-  <input type="number" id="ipt_num" placeholder="Digite o número" />
-</div>
-<div class="campo">
-  <span>Cidade:</span>
-  <input
-    type="text"
-    id="ipt_cidade"
-    placeholder="Digite a cidade"
-  />
-</div>
-</div>
-<div class="form-column">
-<div class="campo">
-  <span>Estado:</span>
-  <input
-    type="text"
-    id="ipt_estado"
-    placeholder="Digite o Estado"
-  />
-</div> -->
