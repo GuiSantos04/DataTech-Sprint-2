@@ -1,6 +1,6 @@
 async function pergunta(mensagem, modeloIA) {
   try {
-      var resultado = await modeloIA.generateContent(`Em um paragrafo responda: ${mensagem}`);
+      var resultado = await modeloIA.generateContent(`Em um curto paragrafo responda: ${mensagem}`);
       
       if (resultado && resultado.response) {
           
