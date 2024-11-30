@@ -22,21 +22,12 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length > 0) {
-                                    res.json({
-                                        id: resultadoAutenticar[0].id,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha,
-                                        cnpj: resultadoAutenticar[0].cnpj,
-                                        aquarios: resultadoAquarios
-                                    });
-                                } else {
-                                    res.status(204).json({ aquarios: [] });
-                                }
-                            })
+                        res.json({
+                            id: resultadoAutenticar[0].id_usuario,
+                            nome: resultadoAutenticar[0].nome,
+                            senha: resultadoAutenticar[0].senha
+                        });
+                            
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Usuario e/ou senha inválido(s)");
                     } else {
@@ -55,10 +46,10 @@ function autenticar(req, res) {
 }
 
 
-// usuarioServer: usuario,
-// senhaServer: senha,
+
 
 function cadastrar(req, res) {
+
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
