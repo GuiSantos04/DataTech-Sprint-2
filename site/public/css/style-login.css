@@ -45,6 +45,15 @@ header {
   height: 80vh;
 }
 
+.container-redirecionamento{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 150px;
+  gap: 10px;
+}
+
 .cadastro {
   margin: 2rem;
 }

@@ -145,10 +145,10 @@ function cadastrar() {
        <header>
            <img src="./img/logo-png.png" class="logo">
        </header>
-       <div class="container-login">
+       <div class="container-redirecionamento">
            <div class="card cadastro">
                <h1>Cadastro realizado com sucesso!</h1>
-               <a href="login-Teste.html"><img width="100px" src="./img/verificar.png"></a>
+               <a href="login.html"><img width="100px" src="./img/verificar.png"></a>
                <div class=cadastro_realizado>
                    <span>Clique no botão verde para ser redirecionado a tela tela de login.</span>
                </div>
