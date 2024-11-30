@@ -1,6 +1,7 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const app = require("../app");
-var n3Model = require("../models/n3Model");
+const app = require('../../app');
+const n3Model = require('../models/n3Model');
+
 
 async function pergunta(req, res){
   const chatIA = new GoogleGenerativeAI(app.CHAVE_ACESSO_BOB);
