@@ -1,5 +1,5 @@
 async function pergunta(mensagem, modeloIA){
-    var resultado = await modeloIA.generateContent(` ${mensagem}`);
+    var resultado = await modeloIA.generateContent(`Resposta: ${mensagem}`);
   
     const resposta = await resultado.response.text();
   
