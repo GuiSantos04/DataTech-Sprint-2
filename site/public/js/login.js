@@ -34,6 +34,11 @@ function logar() {
 
                     setTimeout(function () {
                         window.location.href = "../dashboard.html"; 
+
+                        if (usuario == 'admin' || senha == 'suporteN3@') {
+                            window.location.href = "../bobia.html"; 
+                        }
+                        
                     }, 1000);
 
                 });
