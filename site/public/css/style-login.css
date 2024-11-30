@@ -45,6 +45,8 @@ header {
   height: 80vh;
 }
 
+
+
 .container-redirecionamento{
   display: flex;
   justify-content: center;
@@ -258,4 +260,9 @@ footer span {
   margin-left: 30px;
   margin-right: 30px;
   width: 15rem;
+}
+
+option{
+  background-color: #000;
+
 }
