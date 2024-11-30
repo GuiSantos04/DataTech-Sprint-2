@@ -26,8 +26,8 @@ body {
   padding: 10px;
 }
 
-.header {
-  background-color: rgba(0, 0, 0, 0.9);
+header {
+  background-color: rgba(0, 0, 0, 0.9) ;
 }
 
 .container-cadastro {
@@ -248,4 +248,5 @@ footer span {
 .input-container input {
   margin-left: 30px;
   margin-right: 30px;
+  width: 15rem;
 }

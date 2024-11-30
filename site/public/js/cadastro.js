@@ -1,3 +1,14 @@
+function avancar(){
+  var primeiro = document.getElementById('primeiro');
+  var continuacao = document.getElementById('continuacao');
+  
+  // Esconde o primeiro formulário
+  primeiro.style.display = 'none';
+  
+  // Exibe o formulário de continuação com 'flex' para garantir que ele seja visível
+  continuacao.style.display = 'block';
+}
+
 function cadastrar() {
   // RECEBER VALORES IPT
   var empresa = ipt_empresa.value; // razao social
@@ -161,6 +172,8 @@ function cadastrar() {
       "A senha deve conter ao menos: \n- 1 letra Maiuscula \n- 1 letra minuscula \n- 1 número \n- 1 caractere especial (!, @, #, $, %, &); \n A confirmação deve ser igual a senha descrita no campo anterior!"
     );
   }
+
+
 
 // Enviando o valor da nova input
 fetch("/usuarios/cadastrar", {

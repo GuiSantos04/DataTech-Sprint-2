@@ -18,6 +18,8 @@ RazaoSocial varchar(45),
 NomeFantasia varchar(45),
 Representante varchar(45),
 CNPJ char(14),
+Unidade varchar(45),
+TamanhoDC int,
 Email varchar(45),
 Usuario char(20),
 Senha char(12),
@@ -27,17 +29,6 @@ constraint fkEndEmp foreign key (fkEndereco) references endereco(idEndereco)
 
 desc empresa;
 
-CREATE TABLE datacenter (
-idDC int primary key auto_increment,
-Unidade varchar(45),
-TamanhoDC int,
-fkEndereco int unique,
-fkEmpresa int,
-constraint fkEndDC foreign key (fkEndereco) references endereco(idEndereco),
-constraint fkEmpDC foreign key (fkEmpresa) references empresa(idEmpresa)
-) auto_increment = 501 ;
-
-desc datacenter;
 
 CREATE TABLE parametros (
 idParametros int primary key auto_increment,
