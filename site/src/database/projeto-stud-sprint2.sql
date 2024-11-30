@@ -10,6 +10,8 @@ Cidade varchar(45),
 Estado varchar(45)
 ) auto_increment = 101 ;
 
+select * from endereco;
+
 desc endereco;
 
 CREATE TABLE empresa (
@@ -29,6 +31,7 @@ constraint fkEndEmp foreign key (fkEndereco) references endereco(idEndereco)
 
 desc empresa;
 
+select * from empresa;
 
 CREATE TABLE parametros (
 idParametros int primary key auto_increment,

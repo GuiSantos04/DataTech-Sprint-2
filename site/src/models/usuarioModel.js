@@ -10,7 +10,7 @@ function autenticar(usuario, senha) {
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
-function cadastrar(empresa, nome, repre, cnpj, email, usuario, senha, unidade, tam, cep, num, cidade, estado) {
+function cadastrar(cep, num, cidade, estado, empresa, nome, repre, cnpj,  unidade, tam, email, usuario, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", empresa, nome, repre, cnpj, email, usuario, senha);
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
@@ -20,16 +20,14 @@ function cadastrar(empresa, nome, repre, cnpj, email, usuario, senha, unidade, t
         `;
         
         var instrucaoSql2 = `
-        INSERT INTO empresa (RazaoSocial, NomeFantasia, Representante, CNPJ, Email, Usuario, Senha) VALUES ('${empresa}', '${nome}', '${repre}', '${cnpj}', '${email}', '${usuario}', '${senha}');
+        INSERT INTO empresa (RazaoSocial, NomeFantasia, Representante, CNPJ, Unidade, TamanhoDC, Email, Usuario, Senha, fkEndereco) 
+        VALUES ('${empresa}', '${nome}', '${repre}', '${cnpj}', '${unidade}', '${tam}', '${email}', '${usuario}', '${senha}', (SELECT max(idEndereco) FROM endereco));
         `;
         
-        var instrucaoSql3 = `
-        INSERT INTO datacenter (unidade, tamanhoDC) VALUES ('${unidade}', '${tam}');
-        `
 
 
-    console.log("Executando a instrução SQL: \n" + instrucaoSql + instrucaoSql2 + instrucaoSql3);
-    return database.executar(instrucaoSql), database.executar2(instrucaoSql2), database.executar3(instrucaoSql3);
+    console.log("Executando a instrução SQL: \n" + instrucaoSql + instrucaoSql2);
+    return database.executar(instrucaoSql), database.executar(instrucaoSql2);
 }
 
 

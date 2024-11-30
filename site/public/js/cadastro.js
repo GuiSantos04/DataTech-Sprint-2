@@ -1,13 +1,3 @@
-function avancar(){
-  var primeiro = document.getElementById('primeiro');
-  var continuacao = document.getElementById('continuacao');
-  
-  // Esconde o primeiro formulário
-  primeiro.style.display = 'none';
-  
-  // Exibe o formulário de continuação com 'flex' para garantir que ele seja visível
-  continuacao.style.display = 'block';
-}
 
 function cadastrar() {
   // RECEBER VALORES IPT
@@ -173,6 +163,7 @@ function cadastrar() {
     );
   }
 
+  
 
 
 // Enviando o valor da nova input
@@ -248,4 +239,12 @@ function listar() {
 
   
 
+function avancar(){
+  var primeiro = document.getElementById('primeiro');
+  var continuacao = document.getElementById('continuacao');
   
+  primeiro.style.display = 'none';
+  
+  continuacao.style.display = 'block';
+}
+
