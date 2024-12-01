@@ -50,9 +50,9 @@ StatusSensor  varchar(12),
 constraint chkStts check (StatusSensor in ('Ativo', 'Inativo', 'Manutenção')),
 dtInstal date,
 dtUltManut  date,
-fkDC int,
+fkEmpresa int,
 fkParam int, 
-constraint fkSenDC foreign key (fkDC) references datacenter(idDC),
+constraint fkSenEmp foreign key (fkEmpresa) references empresa(idEmpresa),
 constraint fkParaSen foreign key (fkParam) references parametros(idParametros)
 ) auto_increment = 1101;
 
@@ -67,17 +67,12 @@ fkSensor int,
 constraint fksensleit foreign key(fkSensor) references sensor(idSensor)
 );
 
-drop table leitura;
 desc leitura;
 
 INSERT INTO endereco(Cep, Numero, Cidade, Estado) VALUES
 ('06455000', '3641' ,'Barueri', 'São Paulo'),
 ('04551065', '200', 'São Paulo', 'São Paulo'),
 ('04543907', '1909', 'São Paulo', 'São Paulo');
-
-
-INSERT INTO endereco(Cep, Numero, Cidade, Estado) VALUES
-('08765789', '9087' ,'Campo Grande', 'Mato Grosso Do Sul');
 
 select *from endereco;
 
@@ -88,26 +83,18 @@ INSERT INTO empresa(RazaoSocial, NomeFantasia, Representante, CNPJ, Usuario, Sen
 
 select *from empresa;
 
-INSERT INTO datacenter(Unidade, TamanhoDC, fkEndereco, fkEmpresa) VALUES
-('Nike-Barueri', 1050, 101, 1),
-('Equinix-Paulista', 800, 102, 2),
-('AWS-MS', 2500, 104, 3),
-('AWS-SP', 2100, 103, 3);
-
-select*from datacenter;
-
 INSERT INTO parametros(TempMin, TempMax, UmidMin, UmidMax) VALUES
 (18.00, 22.00, 40.00, 55.00),
 (20.00, 25.00, 30.00, 55.00);
 
 select*from parametros;
 
-INSERT INTO sensor(LocINstal, StatusSensor, dtInstal, dtUltManut, fkDC, fkParam) VALUES
-('Setor A - Andar 1', 'Ativo', '2021-10-04', '2024-07-21', 502, 1001 ),
-('Setor B - Andar 2', 'Ativo', '2022-02-10', '2024-07-21', 502, 1001),
-('Setor A', 'Ativo', '2019-06-20', '2024-03-20', 501, 1001 ),
-('Setor A', 'Ativo', '2017-04-20', '2024-08-20', 504, 1001),
-('Setor B', 'Ativo', '2018-06-10', '2024-01-20', 503, 1002);
+INSERT INTO sensor(LocINstal, StatusSensor, dtInstal, dtUltManut, fkEmpresa, fkParam) VALUES
+('Setor A - Andar 1', 'Ativo', '2021-10-04', '2024-07-21', 2, 1001 ),
+('Setor B - Andar 2', 'Ativo', '2022-02-10', '2024-07-21', 2, 1001),
+('Setor A', 'Ativo', '2019-06-20', '2024-03-20', 1, 1001 ),
+('Setor A', 'Ativo', '2017-04-20', '2024-08-20', 1, 1001),
+('Setor B', 'Ativo', '2018-06-10', '2024-01-20', 3, 1002);
 
 select*from sensor;
 
@@ -129,7 +116,7 @@ l.temperatura, l.umidade, l.fkSensor as 'idSensor' from leitura as l join sensor
 SELECT 
     e.NomeFantasia AS 'Empresa',
     e.Representante AS 'Responsavél',
-    dc.Unidade AS 'Unidade',
+    e.Unidade AS 'Unidade',
     s.LocInstal AS 'Local de Instalação',
     s.StatusSensor AS 'Status',
     s.dtUltManut AS 'Ultima Manutenção',
@@ -138,8 +125,6 @@ SELECT
 FROM
     empresa AS e
         JOIN
-    datacenter AS dc ON dc.fkEmpresa = e.idEmpresa
-        JOIN
-    sensor AS s ON s.fkDC = dc.idDC
+    sensor AS s ON s.fkEmpresa = e.idEmpresa
         JOIN
     leitura AS l ON l.fkSensor = s.idSensor;
