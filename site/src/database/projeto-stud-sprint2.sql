@@ -83,6 +83,8 @@ INSERT INTO empresa(RazaoSocial, NomeFantasia, Representante, CNPJ, Usuario, Sen
 
 select *from empresa;
 
+(SELECT max(idEndereco) FROM endereco);
+
 INSERT INTO parametros(TempMin, TempMax, UmidMin, UmidMax) VALUES
 (18.00, 22.00, 40.00, 55.00),
 (20.00, 25.00, 30.00, 55.00);

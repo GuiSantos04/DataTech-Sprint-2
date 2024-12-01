@@ -5,6 +5,7 @@ function buscarUltimasMedidas(req, res) {
     const limite_linhas = 7;
 
     var idEmpresa = req.params.idEmpresa;
+    console.log(idEmpresa);
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 

@@ -89,7 +89,8 @@
 
     function exibirAquariosDoUsuario() {
 
-        var idEmpresa = sessionStorage.ID_EMPRESA;
+        var idEmpresa = sessionStorage.ID_USUARIO;
+        console.log(idEmpresa);
 
         document.getElementById("graficos").innerHTML += `
             <div id="grafico" class="display-none">
@@ -113,11 +114,11 @@
         console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - labels
-        let labels = [];
+        let eixox = [];
 
         // Criando estrutura para plotar gráfico - dados
         let dados = {
-            labels: labels,
+            labels: [1,2,3],
             datasets: [{
                 label: 'Umidade',
                 data: [],
@@ -141,15 +142,17 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
-            dados.datasets[1].data.push(registro.temperatura);
+            console.log(registro.DataHora)
+            // eixox.push(registro.momento_grafico);
+            dados.datasets[1].data.push(registro.umidade);
+            dados.datasets[0].data.push(registro.temperatura);
+            eixox.push(registro.DataHora);
         }
 
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
         console.log('Labels:')
-        console.log(labels)
+        console.log(eixox)
         console.log('Dados:')
         console.log(dados.datasets)
         console.log('----------------------------------------------')
@@ -162,17 +165,17 @@
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`myChart${idEmpresa}`),
+            document.getElementById(`myChart`),
             config
         );
 
-        setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 2000);
+        // setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 2000);
     }
 
 
-    function obterDadosGrafico() {
+    function obterDadosGrafico(idEmpresa) {
         console.log('Entrei na Obter')
-        fetch(`/medidas/ultimas/`, { method: 'GET' }).then(function (response) {
+        fetch(`/medidas/ultimas/${idEmpresa}`, { method: 'GET' }, { cache: 'no-store' }).then(function (response) {
             console.log(response);
             
             if (response.ok) {

@@ -28,7 +28,7 @@ function logar() {
             console.log(json);
             console.log(JSON.stringify(json));
             sessionStorage.NOME_USUARIO = json.usuario;
-            sessionStorage.ID_USUARIO = json.id;
+            sessionStorage.ID_USUARIO = json.idEmpresa;
 
             setTimeout(function () {
               window.location.href = "../dashboard.html";
