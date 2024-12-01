@@ -1,7 +1,3 @@
-var cep = "";
-var num = "";
-var cidade = "";
-var estado = "";
 
 function cadastrar() {
   // RECEBER VALORES IPT
@@ -12,9 +8,14 @@ function cadastrar() {
   var repre = ipt_repre.value; // representante
   var email = ipt_email.value;
   var cnpj = ipt_cnpj.value;
+  var cep = ipt_cep.value;
+  var num = ipt_num.value;
+  var cidade = ipt_cidade.value;
+  var estado = ipt_estado.value;
   var usuario = ipt_usuario.value;
   var senha = ipt_senha.value;
   var confirmacao = ipt_confirmacao.value;
+
 
   // VARIAVEL SENHA
   // 8  numeros, 1 Maiuscula, 1 número,1 minuscula e 1 especial
@@ -46,12 +47,18 @@ function cadastrar() {
   var tam_email = email.length;
   var tam_usuario = usuario.length;
   var tam_confirmacao = confirmacao.length;
+  var tam_cep = cep.length;
+  var tam_num = num.length;
+  var tam_cidade = cidade.length;
+  var tam_estado = estado.length;
   var tam_unidade = unidade.length;
   var tam_tam = tam.length;
 
   // VARIAVEL INTEIROS
-
+  
   var cnpj_int = parseInt(cnpj);
+  var cep_int = parseInt(cep);
+  var num_int = parseInt(num);
 
   //VARIAVEIS USER VALIDAÇÃO
   var especial_exclamacao_user = usuario.includes("!");
@@ -78,6 +85,10 @@ function cadastrar() {
     tamanho_senha == 0 ||
     tam_confirmacao == 0 ||
     tam_repre == 0 ||
+    tam_num == 0 ||
+    tam_cep == 0 ||
+    tam_cidade == 0 ||
+    tam_estado == 0 ||
     tam_unidade == 0 ||
     tam_tam == 0
   ) {
@@ -102,6 +113,10 @@ function cadastrar() {
     alert(
       "O nome de usuário não pode conter nenhum desses caracteres especiais (!, @, #, $, %, &) nem espaço!"
     );
+  }else if (tam_cep < 8 || cep_int != cep || cep < 0) {
+    alert("O CEP deve ser um número inteiro com 8 digítos!");
+  } else if (num_int != num || num < 0) {
+    alert("O número deve ser um valor inteiro!");
   } else if (
     tamanho_senha >= 8 &&
     tamanho_senha <= 12 &&
@@ -125,157 +140,34 @@ function cadastrar() {
       nove_senha) &&
     senha == confirmacao
   ) {
-    console.log("SUCESSO!");
-
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrarendereco", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        cepServer: numero,
-        numServer: cidade,
-        estadoServer: estado,
-        cidadeServer: cep,
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          setTimeout(() => {
-            window.location = "login-Teste.html";
-          }, "2000");
-
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
-
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        empresaServer: empresa,
-        nomeServer: nome,
-        repreServer: repre,
-        cnpjServer: cnpj,
-        emailServer: email,
-        usuarioServer: usuario,
-        senhaServer: senha,
-        unidadeServer: unidade,
-        tamanhoServer: tam,
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          setTimeout(() => {
-            window.location = "login-Teste.html";
-          }, "2000");
-
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
-
+    console.log('SUCESSO!')
     estrutura.innerHTML = `
-    <header>
-    <img src="./img/logo-png.png" class="logo">
-    </header>
-    <div class="container-redirecionamento">
-    <div class="card cadastro">
-    <h1>Cadastro realizado com sucesso!</h1>
-    <a href="login.html"><img width="100px" src="./img/verificar.png"></a>
-    <div class=cadastro_realizado>
-    <span>Clique no botão verde para ser redirecionado a tela tela de login.</span>
-    </div>
-    </div>
-    </div>
-    <footer class="rodape">
-    <span> &copy; 2024 DataTech Security </span>
-    </footer>`;
-
-    return false;
+       <header>
+           <img src="./img/logo-png.png" class="logo">
+       </header>
+       <div class="container-redirecionamento">
+           <div class="card cadastro">
+               <h1>Cadastro realizado com sucesso!</h1>
+               <a href="login.html"><img width="100px" src="./img/verificar.png"></a>
+               <div class=cadastro_realizado>
+                   <span>Clique no botão verde para ser redirecionado a tela tela de login.</span>
+               </div>
+           </div>
+       </div>
+       <footer class="rodape">
+           <span> &copy; 2024 DataTech Security </span>
+       </footer>`;
   } else {
     alert(
       "A senha deve conter ao menos: \n- 1 letra Maiuscula \n- 1 letra minuscula \n- 1 número \n- 1 caractere especial (!, @, #, $, %, &); \n A confirmação deve ser igual a senha descrita no campo anterior!"
     );
   }
-}
 
-function avancar() {
-  cep = ipt_cep.value;
-  num = ipt_num.value;
-  cidade = ipt_cidade.value;
-  estado = ipt_estado.value;
+  
 
-  var tam_cep = cep.length;
-  var tam_num = num.length;
-  var tam_cidade = cidade.length;
-  var tam_estado = estado.length;
 
-  var cep_int = parseInt(cep);
-  var num_int = parseInt(num);
-
-  var primeiro = document.getElementById("primeiro");
-  var continuacao = document.getElementById("continuacao");
-
-  if (tam_num == 0 || tam_cep == 0 || tam_cidade == 0 || tam_estado == 0) {
-    alert("Todos os campos devem ser inseridos!");
-  } else if (tam_cep < 8 || cep_int != cep || cep < 0) {
-    alert("O CEP deve ser um número inteiro com 8 digítos!");
-  } else if (num_int != num || num < 0) {
-    alert("O número deve ser um valor inteiro!");
-  } else {
-    primeiro.style.display = "none";
-    continuacao.style.display = "block";
-    console.log(cep, num, cidade, estado);
-
-    return num, cep, cidade, estado;
-  }
-}
-
-function cadastrarEndereco(num, cep, cidade, estado) {
-  var numeroVar = num;
-  var cidadeVar = cidade;
-  var estadoVar = estado;
-  var cepVar = cep;
-
-  console.log(cep, num, cidade, estado);
-  // Enviando o valor da nova input
-  fetch("/usuarios/cadastrarendereco", {
+// Enviando o valor da nova input
+fetch("/usuarios/cadastrar", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -283,10 +175,19 @@ function cadastrarEndereco(num, cep, cidade, estado) {
     body: JSON.stringify({
       // crie um atributo que recebe o valor recuperado aqui
       // Agora vá para o arquivo routes/usuario.js
-      cepServer: numeroVar,
-      numServer: cidadeVar,
-      estadoServer: estadoVar,
-      cidadeServer: cepVar,
+      empresaServer: empresa,
+      nomeServer: nome,
+      repreServer: repre,
+      cnpjServer: cnpj,
+      emailServer: email,
+      usuarioServer: usuario,
+      senhaServer: senha,
+      unidadeServer: unidade,
+      tamanhoServer: tam,
+      cepServer: cep,
+      numServer: num,
+      cidadeServer: cidade,
+      estadoServer: estado
     }),
   })
     .then(function (resposta) {
@@ -294,24 +195,56 @@ function cadastrarEndereco(num, cep, cidade, estado) {
 
       if (resposta.ok) {
         cardErro.style.display = "block";
-
+        
         mensagem_erro.innerHTML =
-          "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
+        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+        
         setTimeout(() => {
-          window.location = "login-Teste.html";
+        window.location = "login-Teste.html";
         }, "2000");
-
+        
         limparFormulario();
         finalizarAguardar();
-      } else {
+        } else {
         throw "Houve um erro ao tentar realizar o cadastro!";
-      }
+        }
+        })
+        .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+        });
+        
+        return false;
+}
+
+// Listando empresas cadastradas 
+function listar() {
+  fetch("/empresas/listar", {
+    method: "GET",
+  })
+    .then(function (resposta) {
+      resposta.json().then((empresas) => {
+        empresas.forEach((empresa) => {
+          listaEmpresasCadastradas.push(empresa);
+
+          console.log("listaEmpresasCadastradas")
+          console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+        });
+      });
     })
     .catch(function (resposta) {
       console.log(`#ERRO: ${resposta}`);
-      finalizarAguardar();
     });
-
-  return false;
 }
+
+  
+
+function avancar(){
+  var primeiro = document.getElementById('primeiro');
+  var continuacao = document.getElementById('continuacao');
+  
+  primeiro.style.display = 'none';
+  
+  continuacao.style.display = 'block';
+}
+

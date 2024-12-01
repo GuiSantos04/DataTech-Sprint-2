@@ -98,6 +98,10 @@ INSERT INTO sensor(LocINstal, StatusSensor, dtInstal, dtUltManut, fkEmpresa, fkP
 
 select*from sensor;
 
+SELECT idSensor FROM sensor WHERE fkEmpresa = id.Empresa;
+
+SELECT temperatura as temperatura, umidade as umidade, dataHora FROM (SELECT idSensor FROM sensor WHERE fkEmpresa = 1) as empresa JOIN leitura ON fkSensor = idSensor;
+
 INSERT INTO leitura (temperatura, umidade, fkSensor) VALUES
 (23.00, 43.00, 1103),
 (18.00, 52.00, 1103),
