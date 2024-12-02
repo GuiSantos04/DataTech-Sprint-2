@@ -1,27 +1,25 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idEmpresa, limite_linhas) {
+function buscarUltimasMedidas(limite_linhas) {
   var instrucaoSql = `SELECT
     temperatura as temperatura,
      umidade as umidade,
       dataHora FROM
-      (SELECT idSensor FROM sensor WHERE fkEmpresa = ${idEmpresa}) as empresa
-        JOIN leitura ON fkSensor = idSensor
-        ORDER BY idLeitura DESC LIMIT ${limite_linhas}
+      leitura
+        ORDER BY dataHora DESC LIMIT ${limite_linhas}
     `;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idEmpresa) {
+function buscarMedidasEmTempoReal() {
   var instrucaoSql = `SELECT 
         temperatura as temperatura,
         umidade as umidade,
                         DataHora
                         FROM 
-        (SELECT idSensor FROM sensor WHERE fkEmpresa = ${idEmpresa}) as empresa 
-        JOIN leitura ON fkSensor = idSensor
+        leitura
                     ORDER BY idLeitura DESC LIMIT 1`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);

@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard DataTech</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/sessao.js"></script>
+    <script src="./js/alerta.js"></script>
     <link rel="stylesheet" href="css/style-dash.css" />
 </head>
 
-<body>
+<body onload="atualizarGrafico()">
     <main class="dash">
 
         <section class="conteudo-dash">
@@ -17,7 +19,7 @@
                 <img class="logo" src="./img/logo-png.png" alt="Logo DataTech" />
                 <div class="info-usuario">
                     <img class="img-usuario" src="./img/user-icon-design-free-png.webp" alt="logo cliente">
-                    <p>Bem vindo, <span class="nome-usuario">Frizza!</span></p>
+                    <p>Bem vindo, <span class="nome-usuario" id="b_usuario"></span></p>
                 </div>
                 <a href="./historico.html">Histórico</a>
                 <a href="./login.html">Sair</a>
@@ -71,7 +73,19 @@
                         <div class="quadradinho temperatura" id="temp_kpi"></div>
                         <div class="quadradinho umidade" id="umid_kpi"></div>
                     </div>
-                    <div class="chart-container" id="graficos"></div>
+                    <div class="chart-container" id="graficos">
+                        <div id="grafico" class="display-none">
+                            <h3 class="tituloGraficos">
+                                <span id="tituloAquario"></span>
+                            </h3>
+                            <div class="graph">
+                                <canvas id="myChartCanvas"></canvas>
+                            </div>
+                            <div class="label-captura">
+                                <p id="avisoCapturas" style="color: white"></p>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -84,93 +98,50 @@
 </html>
 
 <script>
-
-    window.onload = exibirAquariosDoUsuario()
-
-    function exibirAquariosDoUsuario() {
-
-        var idEmpresa = sessionStorage.ID_USUARIO;
-        console.log(idEmpresa);
-
-        document.getElementById("graficos").innerHTML += `
-            <div id="grafico" class="display-none">
-                <h3 class="tituloGraficos">
-                    <span id="tituloAquario"></span>
-                </h3>
-                <div class="graph">
-                    <canvas id="myChart"></canvas>
-                </div>
-                <div class="label-captura">
-                    <p id="avisoCapturas" style="color: white"></p>
-                </div>
-            </div>
-            `;
-
-        obterDadosGrafico(idEmpresa);
-    }
-
-    function plotarGrafico(resposta, idEmpresa) {
-
-        console.log('iniciando plotagem do gráfico...');
-
-        // Criando estrutura para plotar gráfico - labels
-        let eixox = [];
-
-        // Criando estrutura para plotar gráfico - dados
-        let dados = {
-            labels: eixox,
-            datasets: [{
-                label: 'Umidade',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
+    var ctx = myChartCanvas
+    
+    // Adicionando gráfico criado em div na tela
+    let myChart = new Chart(ctx,
+    {
+        type: 'line',
+        data: {labels: [],
+        datasets: [{
+            label: 'Umidade',
+            data: [],
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        },
+        {
+            label: 'Temperatura',
+            data: [],
+            fill: false,
+            borderColor: 'rgb(199, 52, 52)',
+            tension: 0.1
+        }]},
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Leitura',
+                    color: 'rgb(0,0,0)',
+                    font: {
+                        size: 24
+                    },
+                    padding: {
+                        bottom: 30
+                    }
+                },
             },
-            {
-                label: 'Temperatura',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(199, 52, 52)',
-                tension: 0.1
-            }]
-        };
-
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
-
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            console.log(registro.dataHora)
-            // eixox.push(registro.momento_grafico);
-            dados.datasets[1].data.push(registro.umidade);
-            dados.datasets[0].data.push(registro.temperatura);
-            eixox.push(registro.dataHora);
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
+    });
 
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(eixox)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
-
-        // Criando estrutura para plotar gráfico - config
-        const config = {
-            type: 'line',
-            data: dados,
-        };
-
-        // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`myChart`),
-            config
-        );
-
-        setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 2000);
-    }
+    var idEmpresa = sessionStorage.ID_USUARIO;
 
 
     function obterDadosGrafico(idEmpresa) {
@@ -184,7 +155,7 @@
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idEmpresa);
+                    atualizarGrafico();
 
                 });
             } else {
@@ -196,104 +167,103 @@
             });
     }
 
-    var umidade_atual = '';
-    var temperatura_atual = '';
+    var umidade_atual = 0;
+    var temperatura_atual = 0;
+    var dataHoraAtual = 0;
 
-    function atualizarGrafico(IdEmpresa, dados, myChart) {
-
-
-
-        fetch(`/medidas/tempo-real/${IdEmpresa}`, { cache: 'no-store' }).then(function (response) {
+    function atualizarGrafico() {
+        fetch(`/medidas/tempo-real/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
-
-                    // obterDadosGrafico(IdEmpresa);
+                    console.log('estou aqui')
+                    obterdados(idEmpresa);
                     // alertar(novoRegistro, IdEmpresa);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico:`);
-                    console.log(dados);
+                    // console.log(dados);
+                    
+                    novoRegistro.forEach((valor) => {
+                        if (myChart.data.labels.length == 10 && myChart.data.datasets[0].data.length == 10) {
+                            myChart.data.datasets[0].data.shift();  // apagar o primeiro de umidade
+                            myChart.data.labels.shift(); // apagar o primeiro
+                            myChart.data.datasets[1].data.shift();  // apagar o primeiro de temperatura;
+                        }
 
+                    // tirando e colocando valores no gráfico
+                    // dataHoraAtual = valor.dataHora;
+                    temperatura_atual = valor.temperatura;
+                    umidade_atual = valor.umidade;
+                    dataHoraAtual = new Date(valor.DataHora);
+                    var dataHoraBR = dataHoraAtual.toLocaleDateString('pt-BR', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+});
+                    myChart.data.datasets[0].data.push(parseFloat(valor.umidade)); // incluir uma nova medida de umidade
+                    myChart.data.labels.push(dataHoraBR); // incluir um novo momento
+                    myChart.data.datasets[1].data.push(parseFloat(valor.temperatura)); // incluir uma nova medida de temperatura
+                })
+                myChart.update();
+                    
+                    var kpi_temp = document.getElementById('temp_kpi')
+                    var kpi_umid = document.getElementById('umid_kpi')
+                    
+                    kpi_temp.innerHTML = ''
+                    kpi_umid.innerHTML = ''
+                    console.log(temperatura_atual)
+                    
+                    // criando e manipulando elementos do HTML via JavaScript
+                    var divPublicacao = document.createElement("div");
+                    var divPublicacao2 = document.createElement("div");
+                    var spankpiTemp = document.createElement("span");
+                    var spankpiUmid = document.createElement("span");
+                    
+                    spankpiTemp.innerHTML = temperatura_atual + '°C';
+                    spankpiUmid.innerHTML = umidade_atual + "%";
+                    
+                    
+                    divPublicacao.className = "publicacao-temp";
+                    divPublicacao2.className = "publicacao-umid";
+                    spankpiTemp.className = "publicacao";
+                    spankpiUmid.className = "publicacao";
+                    
+                    divPublicacao.appendChild(spankpiTemp);
+                    divPublicacao2.appendChild(spankpiUmid);
 
-                    if (novoRegistro[0].dataHora == dados.labels[dados.labels.length - 1]) {
-                        console.log("---------------------------------------------------------------")
-                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].momento_grafico)
-                        console.log("Horário do último dado capturado:")
-                        console.log(dados.labels[dados.labels.length - 1])
-                        console.log("---------------------------------------------------------------")
+                    kpi_temp.appendChild(divPublicacao);
+                    kpi_umid.appendChild(divPublicacao2);
+                    
+                    if (temperatura_atual <= 20) {
+                        kpi_temp.style.backgroundColor = '#00ff00'
+                    } else if (temperatura_atual <= 27) {
+                        kpi_temp.style.backgroundColor = '#ffff00'
                     } else {
-                        // tirando e colocando valores no gráfico
-                        dados.labels.shift(); // apagar o primeiro
-                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-                        umidade_atual = novoRegistro[0].umidade
-                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-                        temperatura_atual = novoRegistro[0].temperatura
-                        // myChart.update();
-
-                        var kpi_temp = document.getElementById('temp_kpi')
-                        var kpi_umid = document.getElementById('umid_kpi')
-
-                        kpi_temp.innerHTML = ''
-                        kpi_umid.innerHTML = ''
-                        console.log(temperatura_atual)
-
-                        // criando e manipulando elementos do HTML via JavaScript
-                        var divPublicacao = document.createElement("div");
-                        var divPublicacao2 = document.createElement("div");
-                        var spankpiTemp = document.createElement("span");
-                        var spankpiUmid = document.createElement("span");
-
-                        spankpiTemp.innerHTML = temperatura_atual + '°C';
-                        spankpiUmid.innerHTML = umidade_atual + "%";
-
-
-                        divPublicacao.className = "publicacao-temp";
-                        divPublicacao2.className = "publicacao-umid";
-                        spankpiTemp.className = "publicacao";
-                        spankpiUmid.className = "publicacao";
-
-                        divPublicacao.appendChild(spankpiTemp);
-                        divPublicacao2.appendChild(spankpiUmid);
-
-                        kpi_temp.appendChild(divPublicacao);
-                        kpi_umid.appendChild(divPublicacao2);
-
-                        if (temperatura_atual <= 20) {
-                            kpi_temp.style.backgroundColor = '#00ff00'
-                        } else if (temperatura_atual <= 27) {
-                            kpi_temp.style.backgroundColor = '#ffff00'
-                        } else {
-                            kpi_temp.style.backgroundColor = '#ff0000'
-                        }
-
-                        if (umidade_atual <= 50) {
-                            kpi_umid.style.backgroundColor = '#00ff00'
-                        } else if (umidade_atual <= 60) {
-                            kpi_umid.style.backgroundColor = '#ffff00'
-                        } else {
-                            kpi_umid.style.backgroundColor = '#ff0000'
-                        }
-                        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                        proximaAtualizacao = setTimeout(() => atualizarGrafico(IdEmpresa, dados, myChart), 2000);
+                        kpi_temp.style.backgroundColor = '#ff0000'
                     }
-                });
+                    
+                    if (umidade_atual <= 50) {
+                        kpi_umid.style.backgroundColor = '#00ff00'
+                    } else if (umidade_atual <= 60) {
+                        kpi_umid.style.backgroundColor = '#ffff00'
+                    } else {
+                        kpi_umid.style.backgroundColor = '#ff0000'
+                    }
+                    
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                }
+                );
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(IdEmpresa, dados, myChart), 2000);
             }
         })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+        
     }
-
+    
+    setInterval(() => {atualizarGrafico()}, 5000);
 
 
     // const ctx = document.getElementById('myChart');
@@ -406,6 +376,105 @@
     //         }
     //     }
     // });
+
+        // function exibirAquariosDoUsuario() {
+
+    //     idEmpresa = sessionStorage.ID_USUARIO;
+    //     console.log(idEmpresa);
+
+    //     document.getElementById("graficos").innerHTML += `
+    //         <div id="grafico" class="display-none">
+    //             <h3 class="tituloGraficos">
+    //                 <span id="tituloAquario"></span>
+    //             </h3>
+    //             <div class="graph">
+    //                 <canvas id="myChartCanvas"></canvas>
+    //             </div>
+    //             <div class="label-captura">
+    //                 <p id="avisoCapturas" style="color: white"></p>
+    //             </div>
+    //         </div>
+    //         `;
+
+    //     obterDadosGrafico(idEmpresa);
+    // }
+    // let eixox = [];
+    // let dados_umidade = [];
+    // let dados_temperatura = [];
+
+    // function plotarGrafico(resposta, idEmpresa) {
+
+    //     console.log('iniciando plotagem do gráfico...');
+        
+
+    //     console.log('A resposta está assim viu:')
+    //     console.log(resposta)
+        
+    //     // Criando estrutura para plotar gráfico - dados
+    //     let dados = {
+    //         labels: [],
+    //         datasets: [{
+    //             label: 'Umidade',
+    //             data: [],
+    //             fill: false,
+    //             borderColor: 'rgb(75, 192, 192)',
+    //             tension: 0.1
+    //         },
+    //         {
+    //             label: 'Temperatura',
+    //             data: [],
+    //             fill: false,
+    //             borderColor: 'rgb(199, 52, 52)',
+    //             tension: 0.1
+    //         }]
+        // };
+        
+        // console.log('----------------------------------------------')
+        // console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        // console.log(resposta)
+        
+        
+        // console.log('----------------------------------------------')
+        // console.log('O gráfico será plotado com os respectivos valores:')
+        // console.log('Labels:')
+        // console.log(eixox)
+        // console.log('Dados:')
+        // console.log(dados.datasets)
+        // console.log('----------------------------------------------')
+
+        // // Inserindo valores recebidos em estrutura para plotar o gráfico
+        // for (i = 0; i < resposta.length; i++) {
+        //     var registro = resposta[i];
+        //     console.log(registro.dataHora)
+        //     // eixox.push(registro.momento_grafico);
+        //     dados_umidade.push(registro.umidade);
+        //     dados_temperatura.push(registro.temperatura);
+        //     eixox.push(registro.dataHora);
+        // }
+
+        
+        // // Criando estrutura para plotar gráfico - config
+        // const config = {
+        //     type: 'line',
+        //     data: {labels: [],
+        //     datasets: [{
+        //         label: 'Umidade',
+        //         data: [],
+        //         fill: false,
+        //         borderColor: 'rgb(75, 192, 192)',
+        //         tension: 0.1
+        //     },
+        //     {
+        //         label: 'Temperatura',
+        //         data: [],
+        //         fill: false,
+        //         borderColor: 'rgb(199, 52, 52)',
+        //         tension: 0.1
+        //     }],
+        // }};
+
+        // setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 2000);
+    // }
 
 
 </script>
@@ -719,3 +788,4 @@ function alterarTitulo(idAquario) {
             },
         },
     }); -->
+

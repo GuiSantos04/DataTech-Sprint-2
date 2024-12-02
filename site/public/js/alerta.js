@@ -1,14 +1,14 @@
 var alertas = [];
 
-function obterdados(idAquario) {
-    fetch(`/medidas/tempo-real/${idAquario}`)
+function obterdados(idEmpresa) {
+    fetch(`/medidas/tempo-real/${idEmpresa}`)
         .then(resposta => {
             if (resposta.status == 200) {
                 resposta.json().then(resposta => {
 
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                    alertar(resposta, idAquario);
+                    // alertar(resposta, idEmpresa);
                 });
             } else {
                 console.error(`Nenhum dado encontrado para o id ${idAquario} ou erro na API`);
@@ -88,19 +88,19 @@ function exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor) {
     exibirCards();
 }
 
-function removerAlerta(idAquario) {
-    alertas = alertas.filter(item => item.idAquario != idAquario);
-    exibirCards();
-}
+// function removerAlerta(idAquario) {
+//     alertas = alertas.filter(item => item.idAquario != idAquario);
+//     exibirCards();
+// }
 
-function exibirCards() {
-    alerta.innerHTML = '';
+// function exibirCards() {
+//     alerta.innerHTML = '';
 
-    for (var i = 0; i < alertas.length; i++) {
-        var mensagem = alertas[i];
-        alerta.innerHTML += transformarEmDiv(mensagem);
-    }
-}
+//     for (var i = 0; i < alertas.length; i++) {
+//         var mensagem = alertas[i];
+//         alerta.innerHTML += transformarEmDiv(mensagem);
+//     }
+// }
 
 function transformarEmDiv({ idAquario, temp, grauDeAviso, grauDeAvisoCor }) {
 
