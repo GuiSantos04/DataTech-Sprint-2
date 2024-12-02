@@ -19,7 +19,7 @@
                     <img class="img-usuario" src="./img/user-icon-design-free-png.webp" alt="logo cliente">
                     <p>Bem vindo, <span class="nome-usuario">Frizza!</span></p>
                 </div>
-                <a href="./historico.html">Histórico</a>
+                <a href="">Histórico</a>
                 <a href="./login.html">Sair</a>
             </nav>
 
@@ -68,8 +68,12 @@
 
                     </div>
                     <div class="kpi">
-                        <div class="quadradinho temperatura" id="temp_kpi"></div>
-                        <div class="quadradinho umidade" id="umid_kpi"></div>
+                        <div class="quadradinho" id="max_temp"></div>
+                        <div class="quadradinho" id="max_umid"></div>
+                        <div class="quadradinho" id="media_temp"></div>
+                        <div class="quadradinho" id="media_umid"></div>
+                        <div class="quadradinho" id="alerta_temp"></div>
+                        <div class="quadradinho" id="alerta_umid"></div>
                     </div>
                     <div class="chart-container" id="graficos"></div>
 
@@ -203,7 +207,8 @@
 
 
 
-        fetch(`/medidas/tempo-real/${IdEmpresa}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/medida-diaria/${IdEmpresa}`, { cache: 'no-store' }).then(function (response) {
+
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
@@ -223,61 +228,79 @@
                         console.log(dados.labels[dados.labels.length - 1])
                         console.log("---------------------------------------------------------------")
                     } else {
-                        // tirando e colocando valores no gráfico
-                        dados.labels.shift(); // apagar o primeiro
-                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+                        umidade_max = novoRegistro[0].maxUmid
+                        umidade_media = novoRegistro[0].mediaUmid
+                        temperatura_max = novoRegistro[0].maxTemp
+                        temperatura_media = novoRegistro[0].mediaTemp
 
-                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-                        umidade_atual = novoRegistro[0].umidade
-                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-                        temperatura_atual = novoRegistro[0].temperatura
-                        // myChart.update();
+                        var kpi_maxTemp = document.getElementById('max_temp');
+                        var kpi_maxUmid = document.getElementById('max_umid');
+                        var kpi_mediaTemp = document.getElementById('media_temp');
+                        var kpi_mediaUmid = document.getElementById('media_umid');
+                        var kpi_alertaTemp = document.getElementById('alerta_temp');
+                        var kpi_alertaUmid = document.getElementById('alerta_umid');
 
-                        var kpi_temp = document.getElementById('temp_kpi')
-                        var kpi_umid = document.getElementById('umid_kpi')
-
-                        kpi_temp.innerHTML = ''
-                        kpi_umid.innerHTML = ''
-                        console.log(temperatura_atual)
+                        kpi_maxTemp.innerHTML = ''
+                        kpi_maxUmid.innerHTML = ''
+                        kpi_mediaTemp.innerHTML = ''
+                        kpi_mediaUmid.innerHTML = ''
+                        kpi_alertaTemp.innerHTML = ''
+                        kpi_alertaUmid.innerHTML = ''
 
                         // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
                         var divPublicacao2 = document.createElement("div");
-                        var spankpiTemp = document.createElement("span");
-                        var spankpiUmid = document.createElement("span");
+                        var divPublicacao3 = document.createElement("div");
+                        var divPublicacao4 = document.createElement("div");
+                        var divPublicacao5 = document.createElement("div");
+                        var divPublicacao6 = document.createElement("div");
+                        var spankpi_maxTemp = document.createElement("span");
+                        var spankpi_maxUmid = document.createElement("span");
+                        var spankpi_mediaTemp = document.createElement("span");
+                        var spankpi_mediaUmid = document.createElement("span");
+                        var spankpi_alertaTemp = document.createElement("span");
+                        var spankpi_alertaUmid = document.createElement("span");
 
-                        spankpiTemp.innerHTML = temperatura_atual + '°C';
-                        spankpiUmid.innerHTML = umidade_atual + "%";
+                        spankpi_maxUmid.innerHTML = umidade_max
+                        spankpi_maxTemp.innerHTML = temperatura_max
+                        spankpi_mediaTemp.innerHTML = temperatura_media
+                        spankpi_mediaUmid.innerHTML = umidade_media
 
 
-                        divPublicacao.className = "publicacao-temp";
-                        divPublicacao2.className = "publicacao-umid";
-                        spankpiTemp.className = "publicacao";
-                        spankpiUmid.className = "publicacao";
+                        divPublicacao.className = "publicacao";
+                        divPublicacao2.className = "publicacao";
+                        divPublicacao3.className = "publicacao";
+                        divPublicacao4.className = "publicacao";
+                        spankpi_maxUmid.className = "publicacao";
+                        spankpi_maxTemp.className = "publicacao";
+                        spankpi_mediaTemp.className = "publicacao";
+                        spankpi_mediaUmid.className = "publicacao";
 
-                        divPublicacao.appendChild(spankpiTemp);
-                        divPublicacao2.appendChild(spankpiUmid);
+                        divPublicacao.appendChild(spankpi_maxTemp);
+                        divPublicacao2.appendChild(spankpi_maxUmid);
+                        divPublicacao3.appendChild(spankpi_mediaTemp);
+                        divPublicacao4.appendChild(spankpi_mediaUmid);
 
-                        kpi_temp.appendChild(divPublicacao);
-                        kpi_umid.appendChild(divPublicacao2);
+                        kpi_maxTemp.appendChild(divPublicacao);
+                        kpi_maxUmid.appendChild(divPublicacao2);
+                        kpi_mediaTemp.appendChild(divPublicacao3);
+                        kpi_mediaUmid.appendChild(divPublicacao4);
 
-                        if (temperatura_atual <= 20) {
-                            kpi_temp.style.backgroundColor = '#00ff00'
-                        } else if (temperatura_atual <= 27) {
-                            kpi_temp.style.backgroundColor = '#ffff00'
-                        } else {
-                            kpi_temp.style.backgroundColor = '#ff0000'
-                        }
+                        // if (temperatura_atual <= 20) {
+                        //     kpi_temp.style.backgroundColor = '#00ff00'
+                        // } else if (temperatura_atual <= 27) {
+                        //     kpi_temp.style.backgroundColor = '#ffff00'
+                        // } else {
+                        //     kpi_temp.style.backgroundColor = '#ff0000'
+                        // }
 
-                        if (umidade_atual <= 50) {
-                            kpi_umid.style.backgroundColor = '#00ff00'
-                        } else if (umidade_atual <= 60) {
-                            kpi_umid.style.backgroundColor = '#ffff00'
-                        } else {
-                            kpi_umid.style.backgroundColor = '#ff0000'
-                        }
+                        // if (umidade_atual <= 50) {
+                        //     kpi_umid.style.backgroundColor = '#00ff00'
+                        // } else if (umidade_atual <= 60) {
+                        //     kpi_umid.style.backgroundColor = '#ffff00'
+                        // } else {
+                        //     kpi_umid.style.backgroundColor = '#ff0000'
+                        // }
                         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                         proximaAtualizacao = setTimeout(() => atualizarGrafico(IdEmpresa, dados, myChart), 2000);
                     }
