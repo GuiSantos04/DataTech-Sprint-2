@@ -60,13 +60,14 @@ desc sensor;
 
 CREATE TABLE leitura (
 idLeitura int primary key auto_increment, 
-DataHora datetime,
+DataHora INT,
 temperatura float(5,2),
 umidade float (5,2),
 fkSensor int,
 constraint fksensleit foreign key(fkSensor) references sensor(idSensor)
 );
 
+drop table leitura;
 desc leitura;
 
 INSERT INTO endereco(Cep, Numero, Cidade, Estado) VALUES
@@ -104,12 +105,21 @@ SELECT idSensor FROM sensor WHERE fkEmpresa = id.Empresa;
 
 SELECT temperatura as temperatura, umidade as umidade, dataHora FROM (SELECT idSensor FROM sensor WHERE fkEmpresa = 1) as empresa JOIN leitura ON fkSensor = idSensor;
 
-INSERT INTO leitura (temperatura, umidade, fkSensor) VALUES
-(23.00, 43.00, 1103),
-(18.00, 52.00, 1103),
-(19.00 , 51.00, 1104),
-(17.00, 53.00, 1102),
-(25.00, 32.00, 1101);
+INSERT INTO leitura (DataHora, temperatura, umidade, fkSensor) VALUES
+(12, 23.00, 43.00, 1103),
+(13, 18.00, 52.00, 1103),
+(14, 19.00 , 51.00, 1104),
+(15, 17.00, 53.00, 1102),
+(16, 25.00, 32.00, 1101);
+
+UPDATE leitura SET DataHora = '2024-12-01 04:00:00'
+	WHERE idLeitura = 1;
+
+UPDATE leitura SET DataHora = '2024-12-01 05:00:00'
+	WHERE idLeitura = 2;
+    
+UPDATE leitura SET DataHora = '2024-12-01 06:00:00'
+	WHERE idLeitura = 3;
 
 SELECT 
     *
