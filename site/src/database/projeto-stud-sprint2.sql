@@ -67,7 +67,7 @@ fkSensor int,
 constraint fksensleit foreign key(fkSensor) references sensor(idSensor)
 );
 
-drop table leitura;
+
 desc leitura;
 
 INSERT INTO endereco(Cep, Numero, Cidade, Estado) VALUES
@@ -105,59 +105,11 @@ SELECT idSensor FROM sensor WHERE fkEmpresa = id.Empresa;
 
 SELECT temperatura as temperatura, umidade as umidade, dataHora FROM (SELECT idSensor FROM sensor WHERE fkEmpresa = 1) as empresa JOIN leitura ON fkSensor = idSensor;
 
-INSERT INTO leitura (DataHora, temperatura, umidade, fkSensor) VALUES
-(12, 23.00, 43.00, 1103),
-(13, 18.00, 52.00, 1103),
-(14, 19.00 , 51.00, 1104),
-(15, 17.00, 53.00, 1102),
-(16, 25.00, 32.00, 1101);
-
-INSERT INTO leitura (DataHora, temperatura, umidade, fkSensor) VALUES
-(15, 23.00, 43.00, 1103),
-(16, 18.00, 52.00, 1103),
-(17, 19.00 , 51.00, 1104);
-
-INSERT INTO leitura (DataHora, temperatura, umidade, fkSensor) VALUES
-(18, 23.00, 43.00, 1103),
-(19, 18.00, 52.00, 1103),
-(20, 19.00 , 51.00, 1104);
-
-INSERT INTO leitura (DataHora, temperatura, umidade, fkSensor) VALUES
-(21, 23.00, 43.00, 1103),
-(22, 18.00, 52.00, 1103),
-(23, 19.00 , 51.00, 1104);
-
-INSERT INTO leitura (DataHora, temperatura, umidade, fkSensor) VALUES
-(24, 23.00, 43.00, 1103),
-(25, 18.00, 52.00, 1103),
-(26, 19.00 , 51.00, 1104);
-
-INSERT INTO leitura (DataHora, temperatura, umidade, fkSensor) VALUES
-(27, 23.00, 43.00, 1103);
-
-INSERT INTO leitura (DataHora, temperatura, umidade, fkSensor) VALUES
-(28, 23.00, 43.00, 1103);
-
-INSERT INTO leitura (DataHora, temperatura, umidade, fkSensor) VALUES
-(29, 23.00, 43.00, 1103);
-
-INSERT INTO leitura (DataHora, temperatura, umidade, fkSensor) VALUES
-(27, 28.00, 60.00, 1103);
-
-INSERT INTO leitura (DataHora, temperatura, umidade, fkSensor) VALUES
-(30, 23.00, 43.00, 1103);
-
-INSERT INTO leitura (DataHora, temperatura, umidade, fkSensor) VALUES
-(31, 23.00, 43.00, 1103),
-(32, 23.00, 43.00, 1103),
-(33, 23.00, 43.00, 1103),
-(34, 23.00, 43.00, 1103),
-(35, 23.00, 43.00, 1103),
-(36, 23.00, 43.00, 1103);
-
-INSERT INTO leitura (DataHora, temperatura, umidade, fkSensor) VALUES
-(37, 19.00, 80.00, 1103);
-
+INSERT INTO leitura (temperatura, umidade) VALUES
+	(15, 42),
+    (19, 50),
+    (20, 52);
+    
 
 UPDATE leitura SET DataHora = '2024-12-01 04:00:00'
 	WHERE idLeitura = 1;
