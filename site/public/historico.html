@@ -218,16 +218,6 @@
                     console.log(`Dados atuais do gráfico:`);
                     console.log(dados);
 
-
-                    if (novoRegistro[0].DataHora == dados.labels[dados.labels.length - 1]) {
-                        console.log("---------------------------------------------------------------")
-                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].momento_grafico)
-                        console.log("Horário do último dado capturado:")
-                        console.log(dados.labels[dados.labels.length - 1])
-                        console.log("---------------------------------------------------------------")
-                    } else {
                         umidade_max = novoRegistro[0].maxUmid
                         umidade_media = novoRegistro[0].mediaUmid
                         temperatura_max = novoRegistro[0].maxTemp
@@ -303,7 +293,7 @@
                         // }
                         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                         proximaAtualizacao = setTimeout(() => atualizarGrafico(IdEmpresa, dados, myChart), 2000);
-                    }
+                    
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');

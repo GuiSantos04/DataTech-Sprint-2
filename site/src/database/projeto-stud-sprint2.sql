@@ -4,7 +4,7 @@ USE stud;
 
 CREATE TABLE endereco (
 idEndereco INT PRIMARY KEY auto_increment,
-Cep char(8),
+Cep char(9),
 Numero char(5),
 Cidade varchar(45),
 Estado varchar(45)
@@ -19,7 +19,7 @@ idEmpresa int primary key auto_increment,
 RazaoSocial varchar(45),
 NomeFantasia varchar(45),
 Representante varchar(45),
-CNPJ char(14),
+CNPJ char(18),
 Unidade varchar(45),
 TamanhoDC int,
 Email varchar(45),
