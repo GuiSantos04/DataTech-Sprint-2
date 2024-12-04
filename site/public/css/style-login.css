@@ -45,8 +45,6 @@ header {
   height: 80vh;
 }
 
-
-
 .container-redirecionamento{
   display: flex;
   justify-content: center;
@@ -138,24 +136,10 @@ header {
   text-align: left;
   padding-left: 5px;
   width: 90%;
-  /* border-radius: 10px; */
   height: 2rem;
-  /* background-color: rgba(255, 255, 255, 0.8); */
   background: rgba(255, 255, 255, 0.201);
   color: #ffffff;
 }
-/* 
-.formulario input, .formulario-cadastro input{
-    border: 2px solid rgb(23, 57, 84);
-    text-align: center;
-    border-radius: 10px;
-    margin: 0;
-    height: 25px;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: rgb(23, 57, 84);
-    font-size: 15px;
-    width: 85%;
-} */
 
 .campo {
   display: flex;
@@ -186,8 +170,6 @@ header {
   color: rgb(255, 255, 255);
   background-color: transparent;
   padding: 0.6rem 2rem;
-  /* width: 40%; */
-  /* height: 2rem; */
   align-self: center;
   margin-top: 1rem;
   font-size: 1rem;

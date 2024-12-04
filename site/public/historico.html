@@ -7,6 +7,9 @@
     <title>Dashboard DataTech</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/style-dash.css" />
+    <script data-jsd-embedded data-key="58caf5ec-06eb-4795-b41f-4f28b9a17f44"
+    data-base-url="https://jsd-widget.atlassian.com"
+    src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
 </head>
 
 <body>
@@ -19,11 +22,12 @@
                     <img class="img-usuario" src="./img/user-icon-design-free-png.webp" alt="logo cliente">
                     <p>Bem vindo, <span class="nome-usuario">Frizza!</span></p>
                 </div>
-                <a href="">Histórico</a>
+                <a href="./dashboard.html">Dados em Tempo Real</a>
+                <a href="./historico.html">Histórico</a>
                 <a href="./login.html">Sair</a>
             </nav>
 
-            <div class="dashboard-conteudo">
+            <div class="dashboard-conteudo-historico">
                 <div class="chart">
                     <div class="area-parametros-alerta">
                         <div class="parametro-temp">
@@ -68,14 +72,18 @@
 
                     </div>
                     <div class="kpi">
+                        <h4>Máxima:</h4>
                         <div class="quadradinho" id="max_temp"></div>
+                        <h4>Máxima:</h4>
                         <div class="quadradinho" id="max_umid"></div>
-                        <div class="quadradinho" id="media_temp"></div>
-                        <div class="quadradinho" id="media_umid"></div>
-                        <div class="quadradinho" id="alerta_temp"></div>
-                        <div class="quadradinho" id="alerta_umid"></div>
                     </div>
-                    <div class="chart-container" id="graficos"></div>
+                    <div class="kpi">
+                        <h4>Média:</h4>
+                        <div class="quadradinho" id="media_temp"></div>
+                        <h4>Média:</h4>
+                        <div class="quadradinho" id="media_umid"></div>
+                    </div>
+
 
                 </div>
             </div>
@@ -95,20 +103,6 @@
 
         var idEmpresa = sessionStorage.ID_USUARIO;
         console.log(idEmpresa);
-
-        document.getElementById("graficos").innerHTML += `
-            <div id="grafico" class="display-none">
-                <h3 class="tituloGraficos">
-                    <span id="tituloAquario"></span>
-                </h3>
-                <div class="graph">
-                    <canvas id="myChart"></canvas>
-                </div>
-                <div class="label-captura">
-                    <p id="avisoCapturas" style="color: white"></p>
-                </div>
-            </div>
-            `;
 
         obterDadosGrafico(idEmpresa);
     }
@@ -234,8 +228,6 @@
                         kpi_maxUmid.innerHTML = ''
                         kpi_mediaTemp.innerHTML = ''
                         kpi_mediaUmid.innerHTML = ''
-                        kpi_alertaTemp.innerHTML = ''
-                        kpi_alertaUmid.innerHTML = ''
 
                         // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
@@ -251,10 +243,10 @@
                         var spankpi_alertaTemp = document.createElement("span");
                         var spankpi_alertaUmid = document.createElement("span");
 
-                        spankpi_maxUmid.innerHTML = umidade_max
-                        spankpi_maxTemp.innerHTML = temperatura_max
-                        spankpi_mediaTemp.innerHTML = temperatura_media
-                        spankpi_mediaUmid.innerHTML = umidade_media
+                        spankpi_maxUmid.innerHTML = `${umidade_max}%`
+                        spankpi_maxTemp.innerHTML = `${temperatura_max}°C`
+                        spankpi_mediaTemp.innerHTML = `${temperatura_media}°C`
+                        spankpi_mediaUmid.innerHTML = `${umidade_media}%`
 
 
                         divPublicacao.className = "publicacao";
@@ -276,21 +268,37 @@
                         kpi_mediaTemp.appendChild(divPublicacao3);
                         kpi_mediaUmid.appendChild(divPublicacao4);
 
-                        // if (temperatura_atual <= 20) {
-                        //     kpi_temp.style.backgroundColor = '#00ff00'
-                        // } else if (temperatura_atual <= 27) {
-                        //     kpi_temp.style.backgroundColor = '#ffff00'
-                        // } else {
-                        //     kpi_temp.style.backgroundColor = '#ff0000'
-                        // }
+                        if (temperatura_max <= 20) {
+                            max_temp.style.backgroundColor = '#00ff00'
+                        } else if (temperatura_max <= 27) {
+                            max_temp.style.backgroundColor = '#ffff00'
+                        } else {
+                            max_temp.style.backgroundColor = '#ff0000'
+                        }
 
-                        // if (umidade_atual <= 50) {
-                        //     kpi_umid.style.backgroundColor = '#00ff00'
-                        // } else if (umidade_atual <= 60) {
-                        //     kpi_umid.style.backgroundColor = '#ffff00'
-                        // } else {
-                        //     kpi_umid.style.backgroundColor = '#ff0000'
-                        // }
+                        if (umidade_max <= 50) {
+                            max_umid.style.backgroundColor = '#00ff00'
+                        } else if (umidade_max <= 60) {
+                            max_umid.style.backgroundColor = '#ffff00'
+                        } else {
+                            max_umid.style.backgroundColor = '#ff0000'
+                        }
+
+                        if (temperatura_media <= 20) {
+                            media_temp.style.backgroundColor = '#00ff00'
+                        } else if (temperatura_media <= 27) {
+                            media_temp.style.backgroundColor = '#ffff00'
+                        } else {
+                            media_temp.style.backgroundColor = '#ff0000'
+                        }
+
+                        if (umidade_media <= 50) {
+                            media_umid.style.backgroundColor = '#00ff00'
+                        } else if (umidade_media <= 60) {
+                            media_umid.style.backgroundColor = '#ffff00'
+                        } else {
+                            media_umid.style.backgroundColor = '#ff0000'
+                        }
                         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                         proximaAtualizacao = setTimeout(() => atualizarGrafico(IdEmpresa, dados, myChart), 2000);
                     

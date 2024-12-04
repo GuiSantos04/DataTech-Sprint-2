@@ -351,6 +351,7 @@ footer span {
   justify-content: space-around;
   align-items: center;
   width: 100%;
+  gap: 50px;
 }
 .conteudo-dash {
   display: flex;
@@ -367,6 +368,8 @@ footer span {
   align-items: center;
   gap: 5rem;
 }
+
+
 
 .area-parametros-alerta {
   /* border: 2px solid pink; */
@@ -445,6 +448,15 @@ footer span {
   justify-content: center;
   width: 100%;
   margin-left: 20%;
+}
+
+.dashboard-conteudo-historico {
+  background-color: #e8edf8;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-left: 20%;
+  height: 100vh;
 }
 
 .dashboard-conteudo h1 {

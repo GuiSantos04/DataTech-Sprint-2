@@ -9,6 +9,9 @@
     <script src="./js/sessao.js"></script>
     <script src="./js/alerta.js"></script>
     <link rel="stylesheet" href="css/style-dash.css" />
+    <script data-jsd-embedded data-key="58caf5ec-06eb-4795-b41f-4f28b9a17f44"
+    data-base-url="https://jsd-widget.atlassian.com"
+    src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
 </head>
 
 <body onload="atualizarGrafico()">
@@ -21,6 +24,7 @@
                     <img class="img-usuario" src="./img/user-icon-design-free-png.webp" alt="logo cliente">
                     <p>Bem vindo, <span class="nome-usuario" id="b_usuario">Frizza</span>!</p>
                 </div>
+                <a href="./dashboard.html">Dados em Tempo Real</a>
                 <a href="./historico.html">Histórico</a>
                 <a href="./login.html">Sair</a>
             </nav>
@@ -73,13 +77,13 @@
                         <div class="quadradinho temperatura" id="temp_kpi"></div>
                         <div class="quadradinho umidade" id="umid_kpi"></div>
                     </div>
-                    <div class="chart-container" id="graficos">
+                    <div class="graph" id="graficos">
                         <div id="grafico" class="display-none">
                             <h3 class="tituloGraficos">
                                 <span id="tituloAquario"></span>
                             </h3>
-                            <div class="graph">
-                                <canvas id="myChartCanvas"></canvas>
+                            <div class="chart-container">
+                                <canvas id="myChartCanvas" class="conteudo-dash"></canvas>
                             </div>
                             <div class="label-captura">
                                 <p id="avisoCapturas" style="color: white"></p>
@@ -124,7 +128,7 @@
             plugins: {
                 title: {
                     display: true,
-                    text: 'Variação de temperatura e umidade por dia',
+                    text: 'Variação de temperatura e umidade em tempo real',
                     color: 'rgb(255, 255, 255)',
                     font: {
                         size: 24
@@ -293,7 +297,7 @@
         
     }
     
-    setInterval(() => {atualizarGrafico()}, 5000);
+    setInterval(() => {atualizarGrafico()}, 2000);
 
 </script>
 

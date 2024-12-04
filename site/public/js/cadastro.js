@@ -241,8 +241,6 @@ function listar() {
     });
 }
 
-  
-
 function avancar(){
   var primeiro = document.getElementById('primeiro');
   var continuacao = document.getElementById('continuacao');
@@ -252,3 +250,11 @@ function avancar(){
   continuacao.style.display = 'block';
 }
 
+function voltar(){
+  var primeiro = document.getElementById('primeiro');
+  var continuacao = document.getElementById('continuacao');
+  
+  primeiro.style.display = 'block';
+  
+  continuacao.style.display = 'none';
+}
